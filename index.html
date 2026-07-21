@@ -2,7 +2,8 @@
 <title>Constat 360° — État des lieux véhicule</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#EDEFF2">
 <style>
   @font-face{
     font-family:'Clash Display';
@@ -15,63 +16,44 @@
     font-weight:600; font-style:normal; font-display:swap;
   }
 
+  /* ============ CHROME LIGHT — blanc argenté, métal, noir laqué ============ */
   :root{
-    --bg:#050505; --surface:#0E0E0E; --core:#141414; --raise:#1B1B1B;
-    --ink:#F4F4F2; --muted:#8A8A86; --faint:#565654;
-    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
-    --shell:rgba(255,255,255,.035);
-    --btn-bg:#F4F4F2; --btn-ink:#050505;
+    --bg:#EDEFF2;
+    --surface:#FFFFFF; --core:#F5F6F8; --raise:#E7E9ED;
+    --ink:#0A0B0D; --muted:#697077; --faint:#A8AEB6;
+    --line:rgba(10,12,14,.08); --line2:rgba(10,12,14,.17);
+    --chrome-hi:#FDFDFE; --chrome-lo:#D6DAE0; --chrome-edge:#C3C8CF;
+    --black-hi:#33363B; --black-lo:#0A0B0D;
     --spring:cubic-bezier(.16,1,.3,1);
     --press:cubic-bezier(.32,.72,0,1);
   }
-  @media (prefers-color-scheme: light){
-    :root{
-      --bg:#F7F7F5; --surface:#FFFFFF; --core:#FFFFFF; --raise:#EFEFED;
-      --ink:#0A0A0A; --muted:#71716D; --faint:#A3A39E;
-      --line:rgba(0,0,0,.09); --line2:rgba(0,0,0,.18);
-      --shell:rgba(0,0,0,.035);
-      --btn-bg:#0A0A0A; --btn-ink:#F7F7F5;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#050505; --surface:#0E0E0E; --core:#141414; --raise:#1B1B1B;
-    --ink:#F4F4F2; --muted:#8A8A86; --faint:#565654;
-    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.16);
-    --shell:rgba(255,255,255,.035);
-    --btn-bg:#F4F4F2; --btn-ink:#050505;
-  }
-  :root[data-theme="light"]{
-    --bg:#F7F7F5; --surface:#FFFFFF; --core:#FFFFFF; --raise:#EFEFED;
-    --ink:#0A0A0A; --muted:#71716D; --faint:#A3A39E;
-    --line:rgba(0,0,0,.09); --line2:rgba(0,0,0,.18);
-    --shell:rgba(0,0,0,.035);
-    --btn-bg:#0A0A0A; --btn-ink:#F7F7F5;
-  }
-
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
   html,body{margin:0; padding:0}
   body{
-    background:var(--bg); color:var(--ink);
+    background:
+      radial-gradient(120% 60% at 50% -10%, #FBFCFD 0%, rgba(251,252,253,0) 60%),
+      linear-gradient(180deg, #F2F4F6 0%, var(--bg) 340px);
+    background-color:var(--bg);
+    color:var(--ink);
     font-family:system-ui, -apple-system, "SF Pro Text", sans-serif;
     font-size:15.5px; line-height:1.5;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
-  .disp{font-family:'Clash Display', system-ui, sans-serif; font-weight:600; letter-spacing:.005em}
+  .disp{font-family:'Clash Display', system-ui, sans-serif; font-weight:600}
   .mono{font-family:ui-monospace, "SF Mono", "Cascadia Mono", Menlo, monospace; font-variant-numeric:tabular-nums}
 
-  /* grain — fixed, non-interactive */
   body::after{
-    content:""; position:fixed; inset:0; z-index:90; pointer-events:none; opacity:.028;
+    content:""; position:fixed; inset:0; z-index:90; pointer-events:none; opacity:.02;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
   #app{max-width:560px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; position:relative}
   @media (min-width:1000px){
-    #app{border-left:1px solid var(--line); border-right:1px solid var(--line)}
+    #app{border-left:1px solid var(--line); border-right:1px solid var(--line); background:rgba(255,255,255,.25)}
   }
 
-  /* ============ floating pill appbar ============ */
+  /* ============ appbar pilule chromée ============ */
   .appbar{
     position:sticky; top:0; z-index:40;
     padding:calc(14px + env(safe-area-inset-top)) 18px 8px;
@@ -80,28 +62,30 @@
   .appbar .pill{
     pointer-events:auto;
     display:flex; align-items:center; gap:12px;
-    background:color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter:blur(22px) saturate(1.4); -webkit-backdrop-filter:blur(22px) saturate(1.4);
-    border:1px solid var(--line); border-radius:999px;
+    background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(240,242,245,.85));
+    backdrop-filter:blur(20px) saturate(1.3); -webkit-backdrop-filter:blur(20px) saturate(1.3);
+    border:1px solid var(--chrome-edge); border-radius:999px;
     padding:9px 18px 9px 10px; max-width:100%;
-    box-shadow:0 12px 40px -18px rgba(0,0,0,.5);
+    box-shadow:inset 0 1px 0 #fff, 0 10px 30px -14px rgba(20,24,30,.35);
   }
   .appbar .pill.noback{padding-left:18px}
   .appbar .back{
     width:34px; height:34px; border-radius:999px; flex:none;
-    border:1px solid var(--line2); background:transparent; color:var(--ink);
-    font-size:17px; line-height:1; cursor:pointer;
+    border:1px solid var(--chrome-edge);
+    background:linear-gradient(180deg, var(--chrome-hi), var(--chrome-lo));
+    color:var(--ink); font-size:17px; line-height:1; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
-    transition:transform .5s var(--spring), background .3s var(--press);
+    box-shadow:inset 0 1px 0 #fff;
+    transition:transform .5s var(--spring);
   }
   .appbar .back:active{transform:scale(.9)}
   .appbar h1{font-family:'Clash Display',system-ui,sans-serif; font-weight:600; font-size:15px; margin:0; letter-spacing:.01em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
   .appbar .sub{font-size:11px; color:var(--muted); margin-top:-1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 
-  .screen{flex:1; padding:14px 18px calc(140px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:16px}
+  .screen{flex:1; padding:14px 18px calc(150px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; gap:16px}
 
-  /* ============ reveal choreography ============ */
-  .rv{opacity:0; transform:translateY(26px); filter:blur(6px)}
+  /* ============ chorégraphie ============ */
+  .rv{opacity:0; transform:translateY(24px); filter:blur(5px)}
   .rv.in{opacity:1; transform:translateY(0); filter:blur(0); transition:opacity .8s var(--spring), transform .8s var(--spring), filter .8s var(--spring)}
   .lt{display:inline-block; overflow:hidden; vertical-align:bottom}
   .lt i{display:inline-block; font-style:normal; transform:translateY(115%); will-change:transform}
@@ -112,18 +96,19 @@
     *{transition-duration:.01ms !important; animation-duration:.01ms !important}
   }
 
-  /* ============ double-bezel card ============ */
+  /* ============ carte chromée double-bezel ============ */
   .shellc{
-    background:var(--shell); border:1px solid var(--line);
+    background:linear-gradient(180deg, var(--chrome-hi), var(--chrome-lo));
+    border:1px solid var(--chrome-edge);
     border-radius:26px; padding:6px;
+    box-shadow:inset 0 1px 0 #fff, 0 14px 34px -22px rgba(20,24,30,.4);
   }
   .corec{
     background:var(--surface); border-radius:20px; padding:18px;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(10,12,14,.04);
   }
-  :root[data-theme="light"] .corec{box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(0,0,0,.03)}
   .corec.tight{padding:8px}
-  .corec h3{margin:0 0 4px; font-family:'Clash Display',system-ui,sans-serif; font-weight:600; font-size:16px; letter-spacing:.01em}
+  .corec h3{margin:0 0 4px; font-family:'Clash Display',system-ui,sans-serif; font-weight:600; font-size:16px}
   .hint{font-size:13px; color:var(--muted)}
   .divider{height:1px; background:var(--line); margin:14px 0}
   .row{display:flex; align-items:center; gap:12px}
@@ -133,42 +118,63 @@
 
   .eyebrow{
     display:inline-flex; align-items:center; gap:7px; width:max-content;
-    border:1px solid var(--line2); border-radius:999px; padding:5px 12px;
+    border:1px solid var(--chrome-edge); border-radius:999px; padding:5px 12px;
+    background:linear-gradient(180deg, #FFFFFF, #EDEFF2);
     font-size:9.5px; font-weight:600; letter-spacing:.22em; text-transform:uppercase;
-    color:var(--muted);
+    color:var(--muted); box-shadow:inset 0 1px 0 #fff;
   }
   .eyebrow::before{content:""; width:5px; height:5px; border-radius:50%; background:var(--ink)}
 
-  /* ============ hero (home) ============ */
+  /* ============ hero ============ */
   .hero{padding:26px 4px 8px; display:flex; flex-direction:column; gap:16px}
   .hero .word{
     font-family:'Clash Display',system-ui,sans-serif; font-weight:600;
     font-size:clamp(42px, 12vw, 58px); line-height:.98; letter-spacing:-.015em;
     text-wrap:balance;
   }
-  .hero .word .thin{font-weight:500; color:var(--muted)}
+  .hero .word .thin{font-weight:500; color:#868D96}
+  .hero .word .thin .lt i{
+    background:linear-gradient(180deg, #B9BEC6 0%, #7E848D 45%, #D8DCE1 55%, #8B9199 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
   .hero p{margin:0; color:var(--muted); font-size:14.5px; max-width:36ch; line-height:1.6}
 
-  /* ============ buttons ============ */
+  /* ============ boutons : noir laqué + cercle chromé ============ */
   .btn{
     position:relative; display:flex; align-items:center; justify-content:space-between; gap:14px;
-    width:100%; border:none; cursor:pointer; font-family:inherit;
-    background:var(--btn-bg); color:var(--btn-ink);
+    width:100%; cursor:pointer; font-family:inherit; overflow:hidden;
+    background:linear-gradient(180deg, var(--black-hi), var(--black-lo) 55%);
+    color:#F5F6F8; border:1px solid #000;
     border-radius:999px; padding:8px 8px 8px 24px; min-height:58px;
     font-size:15.5px; font-weight:600; letter-spacing:.01em;
-    transition:transform .5s var(--spring), opacity .3s var(--press);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.28), 0 10px 24px -12px rgba(10,11,13,.55);
+    transition:transform .5s var(--spring);
   }
+  .btn::before{
+    content:""; position:absolute; top:0; bottom:0; width:60px;
+    background:linear-gradient(105deg, transparent, rgba(255,255,255,.22), transparent);
+    left:-80px; transform:skewX(-12deg); pointer-events:none;
+  }
+  @media (hover:hover){ .btn:hover::before{animation:shine .9s var(--press)} }
+  @keyframes shine{to{left:calc(100% + 80px)}}
   .btn:active{transform:scale(.97)}
   .btn .ic{
     width:42px; height:42px; border-radius:999px; flex:none;
-    background:rgba(128,128,128,.18);
+    background:linear-gradient(180deg, var(--chrome-hi), var(--chrome-lo));
+    border:1px solid var(--chrome-edge); color:var(--ink);
     display:flex; align-items:center; justify-content:center;
-    font-size:17px; transition:transform .5s var(--spring);
+    font-size:17px; box-shadow:inset 0 1px 0 #fff;
+    transition:transform .5s var(--spring);
   }
   .btn:hover .ic{transform:translate(2px,-1px)}
-  .btn.secondary{background:transparent; color:var(--ink); border:1px solid var(--line2)}
-  .btn.secondary .ic{background:var(--shell); border:1px solid var(--line)}
-  .btn:disabled{opacity:.35; cursor:default}
+  .btn.secondary{
+    background:linear-gradient(180deg, #FFFFFF, #EAECEF);
+    color:var(--ink); border:1px solid var(--chrome-edge);
+    box-shadow:inset 0 1px 0 #fff, 0 6px 18px -12px rgba(20,24,30,.35);
+  }
+  .btn.secondary::before{background:linear-gradient(105deg, transparent, rgba(255,255,255,.7), transparent)}
+  .btn.secondary .ic{background:linear-gradient(180deg, var(--black-hi), var(--black-lo)); color:#fff; border-color:#000}
+  .btn:disabled{opacity:.4; cursor:default}
   .btn:focus-visible, .back:focus-visible, input:focus-visible, textarea:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
   .textbtn{
     background:none; border:none; color:var(--muted); cursor:pointer; font-family:inherit;
@@ -180,18 +186,20 @@
   .actionbar{
     position:fixed; bottom:0; left:0; right:0; z-index:35;
     padding:26px 18px calc(18px + env(safe-area-inset-bottom));
-    background:linear-gradient(to top, var(--bg) 55%, transparent);
+    background:linear-gradient(to top, var(--bg) 55%, rgba(237,239,242,0));
     pointer-events:none;
   }
   .actionbar .inner{max-width:560px; margin:0 auto; display:flex; flex-direction:column; gap:8px; pointer-events:auto}
 
-  /* ============ plate ============ */
+  /* ============ plaque chromée ============ */
   .plate{
     display:inline-flex; align-items:center; flex:none;
-    border:1px solid var(--line2); border-radius:8px; overflow:hidden;
+    border:1px solid #9BA1A9; border-radius:8px; overflow:hidden;
+    background:linear-gradient(180deg, #FDFDFE, #DDE0E5);
     font-family:ui-monospace, Menlo, monospace; font-weight:700; font-size:13.5px;
+    box-shadow:inset 0 1px 0 #fff;
   }
-  .plate .band{background:var(--ink); color:var(--bg); font-size:8px; font-weight:800; padding:8px 5px; letter-spacing:.05em}
+  .plate .band{background:linear-gradient(180deg,#2E3238,#0A0B0D); color:#fff; font-size:8px; font-weight:800; padding:8px 5px; letter-spacing:.05em}
   .plate .num{padding:7px 10px; letter-spacing:.08em; color:var(--ink)}
 
   /* ============ dossiers ============ */
@@ -199,28 +207,46 @@
   .dossier .meta{font-size:12px; color:var(--muted); margin-top:1px}
   .status{
     font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
-    padding:5px 10px; border-radius:999px; flex:none; border:1px solid var(--line2); color:var(--muted);
+    padding:5px 10px; border-radius:999px; flex:none;
+    border:1px solid var(--chrome-edge); color:var(--muted);
+    background:linear-gradient(180deg,#FFFFFF,#EDEFF2); box-shadow:inset 0 1px 0 #fff;
   }
-  .status.on{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+  .status.on{background:linear-gradient(180deg, var(--black-hi), var(--black-lo)); color:#fff; border-color:#000}
 
-  /* ============ forms ============ */
+  /* ============ formulaires ============ */
   label.field{display:block; margin-bottom:14px}
   label.field span{display:block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:7px}
-  input[type=text], input[type=email], input[type=number], textarea{
-    width:100%; padding:13px 15px; border-radius:14px; border:1px solid var(--line);
+  input[type=text], input[type=email], input[type=tel], input[type=number], input[type=datetime-local], textarea{
+    width:100%; padding:13px 15px; border-radius:14px; border:1px solid var(--line2);
     background:var(--core); color:var(--ink); font-size:16px; font-family:inherit;
-    transition:border-color .3s var(--press);
+    box-shadow:inset 0 1px 2px rgba(10,12,14,.05);
+    transition:border-color .3s var(--press), background .3s var(--press);
   }
-  input:focus, textarea:focus{border-color:var(--line2)}
+  input:focus, textarea:focus{border-color:var(--ink); background:#fff}
   textarea{resize:vertical; min-height:96px; line-height:1.55}
+  .field-row{display:flex; gap:10px}
+  .field-row label.field{flex:1; min-width:0}
+
+  /* ============ jauge carburant ============ */
+  .fuel{display:flex; gap:5px; align-items:center}
+  .fuel .seg{
+    flex:1; height:26px; border-radius:7px; cursor:pointer;
+    border:1px solid var(--chrome-edge);
+    background:linear-gradient(180deg,#FFFFFF,#E9EBEE);
+    box-shadow:inset 0 1px 0 #fff;
+    transition:transform .3s var(--spring), background .3s var(--press);
+  }
+  .fuel .seg.on{background:linear-gradient(180deg, var(--black-hi), var(--black-lo)); border-color:#000}
+  .fuel .seg:active{transform:scale(.9)}
+  .fuel .val{flex:none; min-width:38px; text-align:right; font-weight:700; font-size:13px}
 
   /* ============ progress ============ */
   .prog{display:flex; flex-direction:column; gap:8px; padding:0 4px}
   .prog .lbl{display:flex; justify-content:space-between; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
-  .prog .track{height:2px; background:var(--line); border-radius:2px; overflow:hidden}
-  .prog .fill{height:100%; background:var(--ink); transform-origin:left; transform:scaleX(0); transition:transform 1s var(--spring)}
+  .prog .track{height:3px; background:linear-gradient(180deg,#D9DCE1,#E9EBEE); border-radius:3px; overflow:hidden; box-shadow:inset 0 1px 1px rgba(10,12,14,.12)}
+  .prog .fill{height:100%; background:linear-gradient(90deg, #33363B, #0A0B0D); transform-origin:left; transform:scaleX(0); transition:transform 1s var(--spring)}
 
-  /* ============ capture guide ============ */
+  /* ============ guide capture ============ */
   .guide{display:flex; flex-direction:column; align-items:center; gap:10px; padding:10px 0 4px}
   .guide svg{width:min(215px, 56vw); height:auto}
   .guide .angle-name{font-family:'Clash Display',system-ui,sans-serif; font-weight:600; font-size:22px; letter-spacing:-.01em}
@@ -230,7 +256,7 @@
   .checklist .item b{color:var(--ink); font-weight:600}
   .checklist .dot{color:var(--ink); flex:none; font-size:8px; transform:translateY(-2px)}
 
-  /* ============ photos & markers ============ */
+  /* ============ photos & marqueurs ============ */
   .photo-wrap{position:relative; border-radius:16px; overflow:hidden; background:var(--raise)}
   .photo-wrap img{display:block; width:100%; height:auto}
   .marker{
@@ -241,25 +267,24 @@
     font-family:ui-monospace, Menlo, monospace;
     box-shadow:0 2px 10px rgba(0,0,0,.5);
   }
-  .marker.exist{background:rgba(255,255,255,.92); color:#0A0A0A}
-  .marker.new{background:#0A0A0A; color:#fff; border:1.5px solid #fff}
+  .marker.exist{background:rgba(255,255,255,.94); color:#0A0B0D; border:1px solid #C3C8CF}
+  .marker.new{background:#0A0B0D; color:#fff; border:1.5px solid #fff}
   .marker.new::after{
     content:""; position:absolute; inset:-7px; border-radius:999px;
-    border:1.5px solid rgba(255,255,255,.75);
+    border:1.5px solid rgba(10,11,13,.6);
     animation:pulse 2s var(--spring) infinite;
   }
   @keyframes pulse{0%{transform:scale(.7); opacity:.9} 70%{transform:scale(1.15); opacity:0} 100%{opacity:0}}
 
   /* ============ analyse ============ */
   .scanbox{position:relative; overflow:hidden; border-radius:16px}
-  .scanbox img{filter:grayscale(.35) contrast(1.05)}
   .scanline{
-    position:absolute; left:0; right:0; height:1.5px; background:#fff;
-    box-shadow:0 0 18px 4px rgba(255,255,255,.55); opacity:.95;
+    position:absolute; left:0; right:0; height:2px; background:#fff;
+    box-shadow:0 0 18px 4px rgba(255,255,255,.8), 0 0 4px 1px rgba(10,11,13,.4);
     animation:scan 2.4s var(--press) infinite alternate;
   }
   @keyframes scan{from{transform:translateY(6px)} to{transform:translateY(min(320px, 52vw))}}
-  .steps{display:flex; flex-direction:column; gap:0}
+  .steps{display:flex; flex-direction:column}
   .steps .st{
     display:flex; align-items:center; gap:14px; font-size:13.5px; color:var(--faint);
     padding:11px 0; border-bottom:1px solid var(--line);
@@ -267,15 +292,18 @@
   }
   .steps .st:last-child{border-bottom:none}
   .steps .st .ic{
-    width:26px; height:26px; border-radius:999px; border:1px solid var(--line2); flex:none;
+    width:26px; height:26px; border-radius:999px; flex:none;
+    border:1px solid var(--chrome-edge);
+    background:linear-gradient(180deg,#FFFFFF,#EAECEF);
     display:flex; align-items:center; justify-content:center;
     font-size:10.5px; font-family:ui-monospace,Menlo,monospace;
+    box-shadow:inset 0 1px 0 #fff;
     transition:all .5s var(--press);
   }
   .steps .st.active{color:var(--ink)}
   .steps .st.active .ic{border-color:var(--ink)}
   .steps .st.done{color:var(--muted)}
-  .steps .st.done .ic{background:var(--ink); color:var(--bg); border-color:var(--ink)}
+  .steps .st.done .ic{background:linear-gradient(180deg,var(--black-hi),var(--black-lo)); color:#fff; border-color:#000}
 
   /* ============ dégâts ============ */
   .dmg{display:flex; gap:14px; padding:14px 0; border-bottom:1px solid var(--line); align-items:flex-start}
@@ -285,16 +313,17 @@
     width:32px; height:32px; border-radius:10px; flex:none;
     display:flex; align-items:center; justify-content:center;
     font-family:ui-monospace, Menlo, monospace; font-weight:700; font-size:13px;
-    border:1px solid var(--line2); color:var(--ink);
+    border:1px solid var(--chrome-edge); color:var(--ink);
+    background:linear-gradient(180deg,#FFFFFF,#EAECEF); box-shadow:inset 0 1px 0 #fff;
   }
-  .dmg.new .num{background:var(--ink); color:var(--bg); border-color:var(--ink)}
-  .dmg .title{font-weight:600; font-size:14.5px; letter-spacing:.005em}
+  .dmg.new .num{background:linear-gradient(180deg,var(--black-hi),var(--black-lo)); color:#fff; border-color:#000}
+  .dmg .title{font-weight:600; font-size:14.5px}
   .dmg .zone{font-size:12.5px; color:var(--muted); margin-top:1px}
   .dmg .size{font-size:12px; margin-top:3px; color:var(--muted)}
   .dmg .size b{color:var(--ink); font-weight:600}
   .newtag{
     display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px;
-    background:var(--ink); color:var(--bg);
+    background:linear-gradient(180deg,var(--black-hi),var(--black-lo)); color:#fff;
     font-size:8.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
     vertical-align:2px;
   }
@@ -312,6 +341,13 @@
   }
   .kpi span{font-size:9px; color:var(--muted); font-weight:600; letter-spacing:.18em; text-transform:uppercase; display:block; margin-top:7px}
 
+  /* ============ fiche récap ============ */
+  .facts{display:grid; grid-template-columns:1fr 1fr; gap:0}
+  .facts .f{padding:10px 4px; border-bottom:1px solid var(--line)}
+  .facts .f:nth-last-child(-n+2){border-bottom:none}
+  .facts .k{font-size:9.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted)}
+  .facts .v{font-size:13.5px; font-weight:600; margin-top:2px; word-break:break-word}
+
   /* ============ compare ============ */
   .cmp{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px}
   .cmp .cap{font-size:9px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:6px}
@@ -319,13 +355,15 @@
   .check-row input[type=checkbox]{width:21px; height:21px; accent-color:var(--ink); flex:none}
   .check-row label{font-size:13.5px; font-weight:600}
 
-  /* ============ signature ============ */
-  .sig-wrap{border:1px dashed var(--line2); border-radius:16px; overflow:hidden; background:var(--core); position:relative}
-  .sig-wrap canvas{display:block; width:100%; height:200px; touch-action:none}
+  /* ============ signatures ============ */
+  .sig-wrap{border:1px dashed var(--line2); border-radius:16px; overflow:hidden; background:#fff; position:relative}
+  .sig-wrap canvas{display:block; width:100%; height:160px; touch-action:none}
   .sig-wrap .ph{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--faint); font-size:13px; letter-spacing:.06em; pointer-events:none}
-  .sig-img{border:1px solid var(--line); border-radius:12px; background:#fff; max-width:210px; display:block}
+  .sig-img{border:1px solid var(--chrome-edge); border-radius:12px; background:#fff; max-width:200px; display:block}
+  .sig-pair{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  .sig-name{font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:8px 0 4px}
 
-  /* ============ letter ============ */
+  /* ============ courrier ============ */
   .letter{font-size:13px; line-height:1.7; color:var(--muted)}
   .letter p{margin:0 0 10px; max-width:60ch}
   .letter p:first-child{color:var(--ink); font-weight:600}
@@ -339,15 +377,31 @@
   .toast{
     position:fixed; bottom:calc(112px + env(safe-area-inset-bottom)); left:50%;
     transform:translate(-50%, 14px); opacity:0;
-    background:var(--ink); color:var(--bg); padding:11px 20px; border-radius:999px;
+    background:linear-gradient(180deg,var(--black-hi),var(--black-lo)); color:#fff;
+    padding:11px 20px; border-radius:999px;
     font-size:13px; font-weight:600; z-index:60; white-space:nowrap; pointer-events:none;
     transition:opacity .5s var(--spring), transform .5s var(--spring);
-    box-shadow:0 16px 40px -12px rgba(0,0,0,.5);
+    box-shadow:0 16px 40px -12px rgba(10,11,13,.5);
   }
   .toast.show{opacity:1; transform:translate(-50%, 0)}
+
+  /* ============ impression PDF ============ */
+  #printsheet{display:none}
+  @media print{
+    body{background:#fff}
+    body::after{display:none}
+    #app, .toast{display:none !important}
+    #printsheet{display:block; font-size:12px; line-height:1.6; color:#111; padding:10mm}
+    #printsheet .ph-head{display:flex; justify-content:space-between; border-bottom:2px solid #111; padding-bottom:8px; margin-bottom:14px}
+    #printsheet .ph-head .brand{font-weight:800; font-size:16px}
+    #printsheet .sigs{display:flex; gap:30px; margin-top:18px}
+    #printsheet .sigs img{max-width:180px; border:1px solid #ccc}
+    #printsheet .small{color:#555; font-size:10px}
+  }
 </style>
 
 <div id="app"></div>
+<div id="printsheet"></div>
 <div class="toast" id="toast"></div>
 <input type="file" id="fileInput" accept="image/*" capture="environment" style="display:none">
 <input type="file" id="videoInput" accept="video/*" capture="environment" style="display:none">
@@ -355,14 +409,17 @@
 <script>
 "use strict";
 /* =====================================================================
-   Constat 360° — état des lieux véhicule (départ / retour)
-   Monochrome edition. L'analyse IA est simulée en local (démo) ; en
-   production elle est remplacée par un appel à l'API Claude Vision.
+   Constat 360° — édition Chrome. État des lieux contradictoire :
+   profil prestataire, remise (lieu/heure/km/carburant), capture guidée,
+   analyse (démo simulée — API Claude Vision en production), double
+   signature client + prestataire, courrier aux deux parties, retour
+   comparé, rapport final imprimable.
    ===================================================================== */
 
 const $ = s => document.querySelector(s);
 const app = $("#app");
-const LS_KEY = "c360.dossiers.v1";
+const LS_D = "c360.dossiers.v2";
+const LS_P = "c360.provider.v1";
 
 const ANGLES = [
   { id:"av",  name:"Face avant",         deg:180, tip:"Placez-vous à 2 m face au capot, véhicule entier dans le cadre.",
@@ -394,14 +451,19 @@ const DMG_TYPES = [
 
 /* ---------- état & persistance ---------- */
 let dossiers = [];
-try { dossiers = JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch(e){ dossiers = []; }
+let provider = null;
+try { dossiers = JSON.parse(localStorage.getItem(LS_D) || "[]"); } catch(e){ dossiers = []; }
+try { provider = JSON.parse(localStorage.getItem(LS_P) || "null"); } catch(e){ provider = null; }
 function persist(){
-  try { localStorage.setItem(LS_KEY, JSON.stringify(dossiers)); }
-  catch(e){ toast("Stockage plein — images trop lourdes pour ce navigateur"); }
+  try {
+    localStorage.setItem(LS_D, JSON.stringify(dossiers));
+    localStorage.setItem(LS_P, JSON.stringify(provider));
+  } catch(e){ toast("Stockage plein — images trop lourdes pour ce navigateur"); }
 }
 const S = { screen:"home", dossierId:null, phase:"depart", photoStep:0 };
 function dossier(){ return dossiers.find(d => d.id === S.dossierId); }
 function phaseData(d){ return S.phase === "depart" ? d.depart : d.retour; }
+function providerName(){ return provider ? (provider.raison || ((provider.prenom||"") + " " + (provider.nom||"")).trim()) : ""; }
 
 function toast(msg){
   const t = $("#toast"); t.textContent = msg; t.classList.add("show");
@@ -410,6 +472,11 @@ function toast(msg){
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const fmtDate = ts => new Date(ts).toLocaleDateString("fr-FR", {day:"numeric", month:"long", year:"numeric"});
 const fmtDateTime = ts => new Date(ts).toLocaleString("fr-FR", {day:"2-digit", month:"2-digit", year:"numeric", hour:"2-digit", minute:"2-digit"});
+const fuelTxt = f => (f == null ? "—" : f + "/8");
+function nowLocalInput(){
+  const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0,16);
+}
 
 /* ---------- RNG déterministe (seed = plaque) ---------- */
 function seedFrom(str){ let h = 2166136261; for (const c of str){ h ^= c.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; }
@@ -480,23 +547,23 @@ function placeholderPhoto(angle, phase){
   const c = document.createElement("canvas"); c.width = 640; c.height = 480;
   const g = c.getContext("2d");
   const grad = g.createLinearGradient(0,0,0,480);
-  grad.addColorStop(0,"#3A3A3A"); grad.addColorStop(.62,"#5A5A5A"); grad.addColorStop(.63,"#2E2E2E"); grad.addColorStop(1,"#232323");
+  grad.addColorStop(0,"#C6CCD3"); grad.addColorStop(.62,"#E2E5E9"); grad.addColorStop(.63,"#9AA0A7"); grad.addColorStop(1,"#7E848B");
   g.fillStyle = grad; g.fillRect(0,0,640,480);
-  g.fillStyle = "#111214";
+  g.fillStyle = "#1B1E22";
   g.beginPath();
   g.moveTo(90,330); g.quadraticCurveTo(100,255,180,240); g.quadraticCurveTo(230,185,330,185);
   g.quadraticCurveTo(430,185,465,240); g.quadraticCurveTo(545,255,552,330);
   g.quadraticCurveTo(552,352,530,352); g.lineTo(112,352); g.quadraticCurveTo(90,352,90,330);
   g.fill();
-  g.fillStyle = "#6E7276";
+  g.fillStyle = "#AEB6BE";
   g.beginPath(); g.moveTo(205,238); g.quadraticCurveTo(245,196,330,196); g.quadraticCurveTo(415,196,450,238); g.closePath(); g.fill();
   for (const wx of [185, 462]){
     g.fillStyle = "#0B0C0D"; g.beginPath(); g.arc(wx, 350, 38, 0, Math.PI*2); g.fill();
-    g.fillStyle = "#44484C"; g.beginPath(); g.arc(wx,350,17,0,Math.PI*2); g.fill();
+    g.fillStyle = "#C8CDD3"; g.beginPath(); g.arc(wx,350,17,0,Math.PI*2); g.fill();
   }
-  g.fillStyle = "rgba(255,255,255,.9)"; g.font = "600 20px system-ui"; g.textAlign = "center";
+  g.fillStyle = "rgba(10,11,13,.85)"; g.font = "600 20px system-ui"; g.textAlign = "center";
   g.fillText("PHOTO D'EXEMPLE", 320, 58);
-  g.font = "14px system-ui"; g.fillStyle = "rgba(255,255,255,.6)";
+  g.font = "14px system-ui"; g.fillStyle = "rgba(10,11,13,.55)";
   g.fillText(angle.name + " — " + (phase==="depart"?"départ":"retour"), 320, 84);
   return c.toDataURL("image/jpeg", 0.7);
 }
@@ -510,7 +577,7 @@ function carDiagram(deg, sweep){
   const cone = a => `${px + 46*Math.cos(toCar+a)},${py + 46*Math.sin(toCar+a)}`;
   return `
   <svg viewBox="0 0 220 260" fill="none" aria-label="Position de prise de vue">
-    ${sweep ? `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 8" opacity=".5">
+    ${sweep ? `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="4 8" opacity=".45">
       <animateTransform attributeName="transform" type="rotate" from="0 ${cx} ${cy}" to="360 ${cx} ${cy}" dur="11s" repeatCount="indefinite"/>
     </circle>` : `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="var(--line2)" stroke-width="1" stroke-dasharray="2 7"/>`}
     <g fill="var(--faint)">
@@ -520,18 +587,16 @@ function carDiagram(deg, sweep){
       <rect x="145" y="168" width="9" height="25" rx="4"/>
     </g>
     <path d="M78 62 Q78 44 92 40 Q110 35 128 40 Q142 44 142 62 L145 178 Q145 205 128 212 Q110 217 92 212 Q75 205 75 178 Z"
-      fill="var(--core)" stroke="var(--ink)" stroke-width="1.75"/>
+      fill="#FFFFFF" stroke="var(--ink)" stroke-width="1.75"/>
     <path d="M86 88 Q110 78 134 88 L131 108 Q110 100 89 108 Z" fill="var(--raise)" stroke="var(--ink)" stroke-width="1"/>
     <path d="M88 178 Q110 186 132 178 L131 164 Q110 171 89 164 Z" fill="var(--raise)" stroke="var(--ink)" stroke-width="1"/>
-    <polygon points="${px},${py} ${cone(-0.42)} ${cone(0.42)}" fill="var(--ink)" opacity=".14"/>
+    <polygon points="${px},${py} ${cone(-0.42)} ${cone(0.42)}" fill="var(--ink)" opacity=".12"/>
     <circle cx="${px}" cy="${py}" r="12" fill="var(--ink)"/>
-    <circle cx="${px}" cy="${py}" r="4" fill="var(--bg)"/>
+    <circle cx="${px}" cy="${py}" r="4" fill="#fff"/>
   </svg>`;
 }
 
-/* =====================================================================
-   CHORÉGRAPHIE : lettres + reveals + compteurs
-   ===================================================================== */
+/* ---------- chorégraphie ---------- */
 function splitLetters(el){
   const text = el.textContent;
   el.textContent = "";
@@ -577,9 +642,7 @@ function choreograph(){
   });
 }
 
-/* =====================================================================
-   RENDU
-   ===================================================================== */
+/* ---------- rendu ---------- */
 function render(){
   window.scrollTo(0,0);
   (SCREENS[S.screen] || SCREENS.home)();
@@ -633,10 +696,27 @@ function photoWithMarkers(photo, damages, cls){
   const marks = damages.map(d => `<div class="marker ${cls || (d.isNew?"new":"exist")}" style="left:${d.x}%;top:${d.y}%">${d.num}</div>`).join("");
   return `<div class="photo-wrap"><img src="${photo}" alt="Photo du véhicule">${marks}</div>`;
 }
+function fuelWidget(id, val){
+  let segs = "";
+  for (let i=1;i<=8;i++) segs += `<span class="seg ${i<=val?"on":""}" data-fuel="${i}"></span>`;
+  return `<div class="fuel" id="${id}">${segs}<span class="val mono">${val}/8</span></div>`;
+}
+function wireFuel(id, onChange){
+  const w = $("#" + id);
+  w.querySelectorAll(".seg").forEach(seg => seg.addEventListener("click", () => {
+    const v = parseInt(seg.dataset.fuel, 10);
+    w.querySelectorAll(".seg").forEach(s => s.classList.toggle("on", parseInt(s.dataset.fuel,10) <= v));
+    w.querySelector(".val").textContent = v + "/8";
+    onChange(v);
+  }));
+}
+function factsGrid(pairs){
+  return `<div class="facts">${pairs.map(([k,v]) => `<div class="f"><div class="k">${esc(k)}</div><div class="v">${esc(v)}</div></div>`).join("")}</div>`;
+}
 
 const SCREENS = {};
 
-/* ---------- Accueil ---------- */
+/* ================= ACCUEIL ================= */
 SCREENS.home = function(){
   const list = dossiers.slice().reverse().map(d => {
     const st = d.status === "clos" ? ["","Clos"] : d.status === "depart-signe" ? ["","Départ signé"] : ["on","En cours"];
@@ -645,104 +725,241 @@ SCREENS.home = function(){
         ${plateHtml(d.plate)}
         <div class="grow">
           <div class="veh">${esc(d.brand)} ${esc(d.model)}</div>
-          <div class="meta">${esc(d.clientName)} · ${fmtDate(d.createdAt)}</div>
+          <div class="meta">${esc(d.clientName)} · ${fmtDate(d.createdAt)} · réf ${esc(d.ref)}</div>
         </div>
         <span class="status ${st[0]}">${st[1]}</span>
-      </div>`, "");
+      </div>`);
   }).join("");
+  const provOk = !!(provider && provider.email);
   shell({
     title:null,
     body:`
       <div class="hero">
         <span class="eyebrow rv">État des lieux — Démo IA simulée</span>
         <div class="word"><span class="split">Constat</span><br><span class="thin split">360°</span></div>
-        <p class="rv">Vidéo guidée, photos sous angles normalisés, dégâts détectés, signés, comparés au retour. En noir et blanc, sans papier.</p>
+        <p class="rv">Vidéo guidée, photos sous angles normalisés, dégâts détectés et mesurés, double signature, courrier aux deux parties.</p>
       </div>
-      <div class="rv">${btn("newd","Nouveau constat de départ",{icon:"＋"})}</div>
+      ${provOk
+        ? card(`<div class="row clickable" data-go="provider">
+            <div class="grow">
+              <h3>${esc(providerName())}</h3>
+              <p class="hint" style="margin:0">${esc(provider.email)}${provider.siren?` · SIREN ${esc(provider.siren)}`:""} — <u style="text-underline-offset:3px">modifier</u></p>
+            </div>
+            <span class="status">Prestataire</span>
+          </div>`)
+        : card(`<div class="clickable" data-go="provider">
+            <h3>Créez votre profil prestataire</h3>
+            <p class="hint" style="margin:4px 0 0">Raison sociale, SIREN, TVA, coordonnées… Il signe chaque constat et figure sur les courriers. <u style="text-underline-offset:3px">Configurer maintenant</u></p>
+          </div>`)}
+      <div class="rv">${btn("newd","Nouveau constat de départ",{icon:"＋", disabled:!provOk})}</div>
+      ${!provOk ? `<p class="hint rv" style="text-align:center; margin:-6px 0 0">Renseignez d'abord le profil prestataire.</p>` : ""}
       ${list ? `<span class="eyebrow rv" style="margin-top:10px">Dossiers</span>${list}` :
         `<div class="empty rv"><span class="k">Aucun dossier</span>Créez un constat de départ<br>avant de remettre les clés.</div>`}
     `,
   });
-  $("#newd").addEventListener("click", () => { S.screen = "newDossier"; render(); });
+  const nd = $("#newd"); if (nd) nd.addEventListener("click", () => { S.screen = "newDossier"; render(); });
   app.querySelectorAll("[data-open]").forEach(el => el.addEventListener("click", () => {
     S.dossierId = el.dataset.open; S.screen = "dossier"; render();
   }));
 };
 
-/* ---------- Nouveau dossier ---------- */
+/* ================= PROFIL PRESTATAIRE ================= */
+SCREENS.provider = function(){
+  const p = provider || {};
+  shell({
+    title:"Profil prestataire", sub:"Figure sur les constats et courriers", back:"home",
+    body: card(`
+        <div class="field-row">
+          <label class="field"><span>Prénom</span><input type="text" id="p-prenom" value="${esc(p.prenom)}" placeholder="Enes"></label>
+          <label class="field"><span>Nom</span><input type="text" id="p-nom" value="${esc(p.nom)}" placeholder="Gunduz"></label>
+        </div>
+        <label class="field"><span>Raison sociale</span><input type="text" id="p-raison" value="${esc(p.raison)}" placeholder="GUNDUZ LOCATION SARL"></label>
+        <div class="field-row">
+          <label class="field"><span>SIREN / SIRET</span><input type="text" id="p-siren" value="${esc(p.siren)}" placeholder="123 456 789 00012" class="mono"></label>
+          <label class="field"><span>TVA intracom.</span><input type="text" id="p-tva" value="${esc(p.tva)}" placeholder="FR12345678901" class="mono"></label>
+        </div>
+        <label class="field"><span>Adresse (siège ou domicile)</span><input type="text" id="p-adresse" value="${esc(p.adresse)}" placeholder="12 rue de la République, 69001 Lyon"></label>
+        <div class="field-row">
+          <label class="field"><span>Téléphone</span><input type="tel" id="p-tel" value="${esc(p.tel)}" placeholder="06 12 34 56 78"></label>
+          <label class="field"><span>Site web</span><input type="text" id="p-site" value="${esc(p.site)}" placeholder="www.exemple.fr"></label>
+        </div>
+        <label class="field" style="margin-bottom:0"><span>Email (reçoit les dossiers) *</span><input type="email" id="p-email" value="${esc(p.email)}" placeholder="contact@exemple.fr"></label>
+    `),
+    actions: btn("p-ok","Enregistrer le profil",{icon:"✓"}),
+  });
+  $("#p-ok").addEventListener("click", () => {
+    const np = {
+      prenom:$("#p-prenom").value.trim(), nom:$("#p-nom").value.trim(),
+      raison:$("#p-raison").value.trim(), siren:$("#p-siren").value.trim(),
+      tva:$("#p-tva").value.trim(), adresse:$("#p-adresse").value.trim(),
+      tel:$("#p-tel").value.trim(), site:$("#p-site").value.trim(),
+      email:$("#p-email").value.trim(),
+    };
+    if (!np.email || (!np.raison && !(np.nom && np.prenom))){
+      toast("Email + raison sociale (ou prénom et nom) requis"); return;
+    }
+    provider = np; persist();
+    S.screen = "home"; render(); toast("Profil prestataire enregistré");
+  });
+};
+
+/* ================= NOUVEAU DOSSIER ================= */
 SCREENS.newDossier = function(){
   shell({
-    title:"Nouveau constat", sub:"Véhicule & client", back:"home",
-    body: card(`
+    title:"Nouveau constat de départ", sub:"Véhicule, client, remise", back:"home",
+    body:`
+      ${card(`
+        <h3>Véhicule</h3>
         <label class="field"><span>Immatriculation</span><input type="text" id="f-plate" placeholder="AB-123-CD" autocapitalize="characters" class="mono"></label>
-        <div class="row">
-          <label class="field grow"><span>Marque</span><input type="text" id="f-brand" placeholder="Renault"></label>
-          <label class="field grow"><span>Modèle</span><input type="text" id="f-model" placeholder="Clio V"></label>
+        <div class="field-row">
+          <label class="field"><span>Marque</span><input type="text" id="f-brand" placeholder="Renault"></label>
+          <label class="field"><span>Modèle</span><input type="text" id="f-model" placeholder="Clio V"></label>
         </div>
-        <label class="field"><span>Kilométrage</span><input type="number" id="f-km" placeholder="45 210" inputmode="numeric"></label>
-        <div class="divider"></div>
-        <label class="field"><span>Nom du client</span><input type="text" id="f-name" placeholder="Jean Dupont"></label>
-        <label class="field" style="margin-bottom:0"><span>Email du client</span><input type="email" id="f-email" placeholder="client@email.fr"></label>
-    `),
+        <label class="field"><span>Kilométrage au départ</span><input type="number" id="f-km" placeholder="45 210" inputmode="numeric"></label>
+        <label class="field" style="margin-bottom:6px"><span>Niveau de carburant</span></label>
+        ${fuelWidget("f-fuel", 8)}
+      `)}
+      ${card(`
+        <h3>Client</h3>
+        <label class="field"><span>Nom complet</span><input type="text" id="f-name" placeholder="Jean Dupont"></label>
+        <div class="field-row">
+          <label class="field"><span>Email (reçoit le dossier)</span><input type="email" id="f-email" placeholder="client@email.fr"></label>
+          <label class="field"><span>Téléphone</span><input type="tel" id="f-tel" placeholder="06 12 34 56 78"></label>
+        </div>
+      `)}
+      ${card(`
+        <h3>Remise du véhicule</h3>
+        <label class="field"><span>Lieu de remise</span><input type="text" id="f-lieu" placeholder="Agence Lyon Part-Dieu"></label>
+        <button class="textbtn" id="f-gps" style="margin:-6px 0 8px; text-align:left; padding:4px 0">📍 Utiliser ma position GPS</button>
+        <label class="field" style="margin-bottom:0"><span>Date et heure de remise</span><input type="datetime-local" id="f-heure" value="${nowLocalInput()}"></label>
+      `)}
+    `,
     actions: btn("f-ok","Commencer la capture"),
+  });
+  let fuel = 8;
+  wireFuel("f-fuel", v => fuel = v);
+  $("#f-gps").addEventListener("click", () => {
+    if (!navigator.geolocation){ toast("GPS indisponible sur cet appareil"); return; }
+    toast("Recherche de la position…");
+    navigator.geolocation.getCurrentPosition(pos => {
+      const c = pos.coords.latitude.toFixed(5) + ", " + pos.coords.longitude.toFixed(5);
+      const f = $("#f-lieu");
+      f.value = f.value ? f.value + " (" + c + ")" : "Position GPS : " + c;
+      toast("Position ajoutée au lieu de remise");
+    }, () => toast("Position refusée ou indisponible"), {timeout:8000});
   });
   $("#f-ok").addEventListener("click", () => {
     const plate = $("#f-plate").value.trim().toUpperCase();
     const brand = $("#f-brand").value.trim(), model = $("#f-model").value.trim();
     const name = $("#f-name").value.trim(), email = $("#f-email").value.trim();
     if (!plate || !brand || !name){ toast("Immatriculation, marque et nom du client sont requis"); return; }
+    const heure = $("#f-heure").value ? new Date($("#f-heure").value).getTime() : Date.now();
+    const seq = (dossiers.length + 1).toString().padStart(3, "0");
     const d = {
-      id: "d" + Date.now(), plate, brand, model, km: $("#f-km").value.trim(),
-      clientName: name, clientEmail: email, createdAt: Date.now(),
-      status: "depart-en-cours",
-      depart: { video:null, photos:{}, damages:null, signature:null, signedAt:null },
-      retour: { video:null, photos:{}, damages:null, signature:null, signedAt:null, observations:"", checked:[] },
+      id: "d" + Date.now(),
+      ref: "C360-" + new Date().getFullYear() + "-" + seq,
+      plate, brand, model,
+      clientName: name, clientEmail: email, clientTel: $("#f-tel").value.trim(),
+      createdAt: Date.now(), status: "depart-en-cours",
+      depart: { lieu:$("#f-lieu").value.trim(), at:heure, km:$("#f-km").value.trim(), fuel,
+                video:null, photos:{}, damages:null, sigClient:null, sigPresta:null, signedAt:null },
+      retour: { lieu:"", at:null, km:"", fuel:null,
+                video:null, photos:{}, damages:null, observations:"", checked:[],
+                sigClient:null, sigPresta:null, signedAt:null },
     };
     dossiers.push(d); persist();
     S.dossierId = d.id; S.phase = "depart"; S.photoStep = 0; S.screen = "captureVideo"; render();
   });
 };
 
-/* ---------- Fiche dossier ---------- */
+/* ================= FICHE DOSSIER ================= */
 SCREENS.dossier = function(){
   const d = dossier(); if (!d){ S.screen="home"; return render(); }
   const depDone = d.status !== "depart-en-cours";
   let body = card(`
-      <div class="row">
+      <div class="row" style="margin-bottom:10px">
         ${plateHtml(d.plate)}
         <div class="grow">
           <div class="dossier"><div class="veh">${esc(d.brand)} ${esc(d.model)}</div></div>
-          <div class="hint">${esc(d.clientName)}${d.km?` · ${esc(d.km)} km`:""}</div>
+          <div class="hint">réf ${esc(d.ref)}</div>
         </div>
-      </div>`);
+      </div>
+      ${factsGrid([
+        ["Client", d.clientName],
+        ["Prestataire", providerName()],
+        ["Remise", (d.depart.lieu || "—")],
+        ["Le", d.depart.at ? fmtDateTime(d.depart.at) : "—"],
+        ["Km départ", d.depart.km ? d.depart.km + " km" : "—"],
+        ["Carburant", fuelTxt(d.depart.fuel)],
+      ])}`);
   if (!depDone){
     body += card(`<h3>Constat de départ en cours</h3><p class="hint" style="margin:4px 0 0">La capture n'est pas terminée. Reprenez là où vous en étiez.</p>`);
   } else {
     const n = d.depart.damages.length;
     body += card(`<div class="clickable" data-go-report="depart">
-      <h3>Constat de départ — signé</h3>
-      <p class="hint" style="margin:4px 0 0">${fmtDateTime(d.depart.signedAt)} · ${n} dégât${n>1?"s":""} référencé${n>1?"s":""} · courrier envoyé — <u style="text-underline-offset:3px">voir le rapport</u></p>
+      <h3>Constat de départ — signé ✓</h3>
+      <p class="hint" style="margin:4px 0 0">${fmtDateTime(d.depart.signedAt)} · ${n} dégât${n>1?"s":""} référencé${n>1?"s":""} · signatures client + prestataire — <u style="text-underline-offset:3px">voir le rapport</u></p>
     </div>`);
   }
   if (d.status === "clos"){
     const news = d.retour.damages.filter(x=>x.isNew).length;
     body += card(`<div class="clickable" data-go-report="final">
-      <h3>Constat de retour — clos</h3>
+      <h3>Constat de retour — clos ✓</h3>
       <p class="hint" style="margin:4px 0 0">${fmtDateTime(d.retour.signedAt)} · ${news} nouveau${news>1?"x":""} dégât${news>1?"s":""} — <u style="text-underline-offset:3px">voir le rapport final</u></p>
     </div>`);
   }
   let action = "";
   if (!depDone) action = btn("resume","Reprendre la capture départ");
   else if (d.status === "depart-signe") action = btn("startReturn","Démarrer le constat de retour",{icon:"↩"});
-  shell({ title:"Dossier", sub:d.plate, back:"home", body, actions:action || undefined });
+  shell({ title:"Dossier " + d.ref, sub:d.plate, back:"home", body, actions:action || undefined });
   const r = $("#resume"); if (r) r.addEventListener("click", () => { S.phase="depart"; S.photoStep=0; S.screen = d.depart.video ? "capturePhoto" : "captureVideo"; render(); });
-  const sr = $("#startReturn"); if (sr) sr.addEventListener("click", () => { S.phase="retour"; S.photoStep=0; S.screen="captureVideo"; render(); });
+  const sr = $("#startReturn"); if (sr) sr.addEventListener("click", () => { S.phase="retour"; S.screen="retourInfo"; render(); });
   app.querySelectorAll("[data-go-report]").forEach(el => el.addEventListener("click", () => {
     S.screen = el.dataset.goReport === "final" ? "reportFinal" : "reportDepart"; render();
   }));
 };
 
-/* ---------- Vidéo 360° ---------- */
+/* ================= INFOS RESTITUTION ================= */
+SCREENS.retourInfo = function(){
+  const d = dossier();
+  const initFuel = d.retour.fuel != null ? d.retour.fuel : (d.depart.fuel != null ? d.depart.fuel : 8);
+  shell({
+    title:"Restitution du véhicule", sub:`${d.plate} · réf ${d.ref}`, back:"dossier",
+    body: card(`
+        <h3>Conditions de restitution</h3>
+        <label class="field"><span>Lieu de restitution</span><input type="text" id="r-lieu" value="${esc(d.retour.lieu)}" placeholder="${esc(d.depart.lieu || "Agence Lyon Part-Dieu")}"></label>
+        <button class="textbtn" id="r-gps" style="margin:-6px 0 8px; text-align:left; padding:4px 0">📍 Utiliser ma position GPS</button>
+        <label class="field"><span>Date et heure de restitution</span><input type="datetime-local" id="r-heure" value="${nowLocalInput()}"></label>
+        <label class="field"><span>Kilométrage au retour</span><input type="number" id="r-km" value="${esc(d.retour.km)}" placeholder="${esc(d.depart.km || "")}" inputmode="numeric"></label>
+        <label class="field" style="margin-bottom:6px"><span>Niveau de carburant</span></label>
+        ${fuelWidget("r-fuel", initFuel)}
+    `),
+    actions: btn("r-ok","Capturer l'état au retour"),
+  });
+  let fuel = initFuel;
+  wireFuel("r-fuel", v => fuel = v);
+  $("#r-gps").addEventListener("click", () => {
+    if (!navigator.geolocation){ toast("GPS indisponible sur cet appareil"); return; }
+    toast("Recherche de la position…");
+    navigator.geolocation.getCurrentPosition(pos => {
+      const c = pos.coords.latitude.toFixed(5) + ", " + pos.coords.longitude.toFixed(5);
+      const f = $("#r-lieu");
+      f.value = f.value ? f.value + " (" + c + ")" : "Position GPS : " + c;
+      toast("Position ajoutée");
+    }, () => toast("Position refusée ou indisponible"), {timeout:8000});
+  });
+  $("#r-ok").addEventListener("click", () => {
+    const dd = dossier();
+    dd.retour.lieu = $("#r-lieu").value.trim();
+    dd.retour.at = $("#r-heure").value ? new Date($("#r-heure").value).getTime() : Date.now();
+    dd.retour.km = $("#r-km").value.trim();
+    dd.retour.fuel = fuel;
+    persist();
+    S.photoStep = 0; S.screen = "captureVideo"; render();
+  });
+};
+
+/* ================= VIDÉO 360° ================= */
 SCREENS.captureVideo = function(){
   const d = dossier(); const pd = phaseData(d);
   shell({
@@ -762,7 +979,7 @@ SCREENS.captureVideo = function(){
           <div class="item"><span class="dot">●</span><span>Évitez le contre-jour ; les reflets gênent la détection</span></div>
         </div>
       `)}
-      ${pd.video && pd.video.thumb ? card(`<h3>Vidéo enregistrée</h3><div class="photo-wrap" style="margin-top:10px"><img src="${pd.video.thumb}" alt="Aperçu vidéo"></div><p class="hint" style="margin:10px 0 0">Durée ${Math.round(pd.video.dur)} s — refaites-la ou continuez.</p>`) : ""}
+      ${pd.video && pd.video.thumb ? card(`<h3>Vidéo enregistrée ✓</h3><div class="photo-wrap" style="margin-top:10px"><img src="${pd.video.thumb}" alt="Aperçu vidéo"></div><p class="hint" style="margin:10px 0 0">Durée ${Math.round(pd.video.dur)} s — refaites-la ou continuez.</p>`) : ""}
     `,
     actions:`
       ${btn("recVideo", pd.video ? "Refaire la vidéo" : "Filmer le tour 360°", {icon:"●"})}
@@ -789,7 +1006,7 @@ SCREENS.captureVideo = function(){
   const nx = $("#nextV"); if (nx) nx.addEventListener("click", () => { S.photoStep = 0; S.screen = "capturePhoto"; render(); });
 };
 
-/* ---------- Photos guidées ---------- */
+/* ================= PHOTOS GUIDÉES ================= */
 SCREENS.capturePhoto = function(){
   const d = dossier(); const pd = phaseData(d);
   if (S.photoStep >= ANGLES.length){ S.screen = "analyzing"; return render(); }
@@ -835,7 +1052,7 @@ SCREENS.capturePhoto = function(){
   const nx = $("#nextP"); if (nx) nx.addEventListener("click", () => { S.photoStep++; render(); });
 };
 
-/* ---------- Analyse ---------- */
+/* ================= ANALYSE ================= */
 SCREENS.analyzing = function(){
   const d = dossier(); const pd = phaseData(d);
   const firstPhoto = pd.photos[ANGLES[0].id] || Object.values(pd.photos)[0];
@@ -889,11 +1106,11 @@ SCREENS.analyzing = function(){
   }
 };
 
-/* ---------- Rapport de départ ---------- */
+/* ================= RAPPORT DÉPART ================= */
 SCREENS.reportDepart = function(){
   const d = dossier(); const dep = d.depart;
   const dmgs = dep.damages || [];
-  const signed = !!dep.signature;
+  const signed = !!(dep.sigClient && dep.sigPresta);
   const byPhoto = {};
   dmgs.forEach(x => { (byPhoto[x.photoIdx] = byPhoto[x.photoIdx] || []).push(x); });
   const photosHtml = Object.keys(byPhoto).map(idx => {
@@ -904,13 +1121,22 @@ SCREENS.reportDepart = function(){
   }).join("");
   const total = dmgs.length, imp = dmgs.filter(x=>x.sev===3).length;
   shell({
-    title:"Constat de départ", sub:`${d.plate} · ${fmtDate(d.createdAt)}`, back:"dossier",
+    title:"Constat de départ", sub:`${d.plate} · réf ${d.ref}`, back:"dossier",
     body:`
       <div class="shellc rv"><div class="corec tight kpis">
         <div class="kpi"><b data-count="${total}">0</b><span>dégâts</span></div>
         <div class="kpi"><b data-count="${imp}">0</b><span>importants</span></div>
         <div class="kpi"><b>8</b><span>vues + 360°</span></div>
       </div></div>
+      ${card(`
+        <h3>Conditions de remise</h3>
+        ${factsGrid([
+          ["Lieu", dep.lieu || "—"],
+          ["Date & heure", dep.at ? fmtDateTime(dep.at) : "—"],
+          ["Kilométrage", dep.km ? dep.km + " km" : "—"],
+          ["Carburant", fuelTxt(dep.fuel)],
+        ])}
+      `)}
       ${card(`
         <h3>Dégâts référencés au départ</h3>
         <p class="hint" style="margin:0">Numérotés, localisés, mesurés. Ce référentiel sert de base à la comparaison au retour.</p>
@@ -919,92 +1145,143 @@ SCREENS.reportDepart = function(){
       ${photosHtml}
       ${signed ? `
         ${card(`
-          <h3>Signé par ${esc(d.clientName)}</h3>
-          <p class="hint" style="margin:2px 0 12px">le ${fmtDateTime(dep.signedAt)}</p>
-          <img class="sig-img" src="${dep.signature}" alt="Signature">
+          <h3>Signatures</h3>
+          <div class="sig-pair">
+            <div><p class="sig-name">Client — ${esc(d.clientName)}</p><img class="sig-img" src="${dep.sigClient}" alt="Signature client" style="max-width:100%"></div>
+            <div><p class="sig-name">Prestataire — ${esc(providerName())}</p><img class="sig-img" src="${dep.sigPresta}" alt="Signature prestataire" style="max-width:100%"></div>
+          </div>
+          <p class="hint" style="margin:10px 0 0">Signé le ${fmtDateTime(dep.signedAt)}</p>
         `)}
         ${letterCard(d, "depart")}` : ""}
     `,
     actions: signed
       ? (d.status === "depart-signe" ? btn("startReturn2","Démarrer le constat de retour",{icon:"↩"}) : "")
-      : btn("toSign","Faire signer le client"),
+      : btn("toSign","Faire signer les deux parties"),
   });
   const ts = $("#toSign"); if (ts) ts.addEventListener("click", () => { S.phase="depart"; S.screen = "sign"; render(); });
-  const sr = $("#startReturn2"); if (sr) sr.addEventListener("click", () => { S.phase="retour"; S.photoStep=0; S.screen="captureVideo"; render(); });
+  const sr = $("#startReturn2"); if (sr) sr.addEventListener("click", () => { S.phase="retour"; S.screen="retourInfo"; render(); });
+  fillPrintsheet(d, "depart");
+  wirePrint();
 };
 
-/* ---------- Signature ---------- */
+/* ================= DOUBLE SIGNATURE ================= */
 SCREENS.sign = function(){
   const d = dossier();
   const isRetour = S.phase === "retour";
   shell({
-    title:"Signature du client", sub:`${d.clientName} — ${isRetour?"restitution":"départ"}`, back: isRetour ? "compare" : "reportDepart",
-    body: card(`
-        <p class="hint" style="margin:0 0 14px; line-height:1.7">En signant, ${esc(d.clientName)} reconnaît l'exactitude de l'état des lieux ${isRetour?"de restitution":"de départ"} ci-joint${isRetour?", observations comprises":""}.</p>
-        <div class="sig-wrap">
-          <canvas id="sigpad"></canvas>
-          <div class="ph" id="sigph">Signez ici avec le doigt</div>
-        </div>
-        <button class="textbtn" id="sigclear" style="margin-top:6px">Effacer la signature</button>
-    `),
-    actions: btn("sigok","Valider la signature",{icon:"✓", disabled:true}),
+    title:"Signatures des deux parties", sub:`Constat ${isRetour?"de restitution":"de départ"} · ${d.ref}`, back: isRetour ? "compare" : "reportDepart",
+    body:`
+      ${card(`
+        <h3>Client — ${esc(d.clientName)}</h3>
+        <p class="hint" style="margin:0 0 10px">Reconnaît l'exactitude de l'état des lieux ${isRetour?"de restitution, observations comprises":"de départ"}.</p>
+        <div class="sig-wrap"><canvas id="sig1"></canvas><div class="ph" id="ph1">Signature du client</div></div>
+        <button class="textbtn" data-clear="1" style="text-align:left; padding:6px 0">Effacer</button>
+      `)}
+      ${card(`
+        <h3>Prestataire — ${esc(providerName())}</h3>
+        <p class="hint" style="margin:0 0 10px">Certifie avoir ${isRetour?"repris":"remis"} le véhicule dans l'état décrit au présent constat.</p>
+        <div class="sig-wrap"><canvas id="sig2"></canvas><div class="ph" id="ph2">Signature du prestataire</div></div>
+        <button class="textbtn" data-clear="2" style="text-align:left; padding:6px 0">Effacer</button>
+      `)}
+    `,
+    actions: btn("sigok","Valider les deux signatures",{icon:"✓", disabled:true}),
   });
-  const cv = $("#sigpad"), ph = $("#sigph"), ok = $("#sigok");
-  const dpr = window.devicePixelRatio || 1;
-  const rect = cv.getBoundingClientRect();
-  cv.width = rect.width * dpr; cv.height = 200 * dpr;
-  const g = cv.getContext("2d");
-  g.scale(dpr, dpr); g.lineWidth = 2.2; g.lineCap = "round"; g.lineJoin = "round";
-  g.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim() || "#111";
-  let drawing = false, empty = true;
-  const pos = e => { const r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; };
-  cv.addEventListener("pointerdown", e => { drawing = true; cv.setPointerCapture(e.pointerId); const p = pos(e); g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(p.x+0.1, p.y+0.1); g.stroke(); empty = false; ph.style.display="none"; ok.disabled = false; });
-  cv.addEventListener("pointermove", e => { if (!drawing) return; const p = pos(e); g.lineTo(p.x, p.y); g.stroke(); });
-  cv.addEventListener("pointerup", () => drawing = false);
-  $("#sigclear").addEventListener("click", () => { g.clearRect(0,0,cv.width,cv.height); empty = true; ph.style.display=""; ok.disabled = true; });
-  ok.addEventListener("click", () => {
-    if (empty) return;
+  const pads = {};
+  function check(){ $("#sigok").disabled = !(pads[1] && pads[2] && !pads[1].empty && !pads[2].empty); }
+  function initPad(n){
+    const cv = $("#sig" + n), ph = $("#ph" + n);
+    const dpr = window.devicePixelRatio || 1;
+    const rect = cv.getBoundingClientRect();
+    cv.width = rect.width * dpr; cv.height = 160 * dpr;
+    const g = cv.getContext("2d");
+    g.scale(dpr, dpr); g.lineWidth = 2.2; g.lineCap = "round"; g.lineJoin = "round";
+    g.strokeStyle = "#0A0B0D";
+    const st = { cv, ph, g, empty:true, drawing:false };
+    const pos = e => { const r = cv.getBoundingClientRect(); return {x: e.clientX - r.left, y: e.clientY - r.top}; };
+    cv.addEventListener("pointerdown", e => { st.drawing = true; cv.setPointerCapture(e.pointerId); const p = pos(e); g.beginPath(); g.moveTo(p.x, p.y); g.lineTo(p.x+0.1, p.y+0.1); g.stroke(); st.empty = false; ph.style.display="none"; check(); });
+    cv.addEventListener("pointermove", e => { if (!st.drawing) return; const p = pos(e); g.lineTo(p.x, p.y); g.stroke(); });
+    cv.addEventListener("pointerup", () => st.drawing = false);
+    pads[n] = st;
+  }
+  function exportPad(n){
+    const st = pads[n];
     const out = document.createElement("canvas");
-    out.width = cv.width; out.height = cv.height;
+    out.width = st.cv.width; out.height = st.cv.height;
     const og = out.getContext("2d");
     og.fillStyle = "#ffffff"; og.fillRect(0,0,out.width,out.height);
-    og.drawImage(cv, 0, 0);
+    og.drawImage(st.cv, 0, 0);
+    return out.toDataURL("image/png");
+  }
+  initPad(1); initPad(2);
+  app.querySelectorAll("[data-clear]").forEach(b => b.addEventListener("click", () => {
+    const st = pads[b.dataset.clear];
+    st.g.clearRect(0,0,st.cv.width,st.cv.height); st.empty = true; st.ph.style.display = ""; check();
+  }));
+  $("#sigok").addEventListener("click", () => {
+    if (pads[1].empty || pads[2].empty) return;
     const dd = dossier();
     const pd = isRetour ? dd.retour : dd.depart;
-    pd.signature = out.toDataURL("image/png");
+    pd.sigClient = exportPad(1);
+    pd.sigPresta = exportPad(2);
     pd.signedAt = Date.now();
     dd.status = isRetour ? "clos" : "depart-signe";
     persist();
     S.screen = isRetour ? "reportFinal" : "reportDepart";
     render();
-    toast("Signature enregistrée — courrier prêt à envoyer");
+    toast("Constat signé par les deux parties — courrier prêt");
   });
 };
 
-/* ---------- Courrier ---------- */
+/* ================= COURRIER ================= */
 function letterText(d, kind){
   const dep = d.depart;
-  const lines = [];
+  const p = provider || {};
+  const pn = providerName();
   const sevName = s => s===1?"légère":s===2?"modérée":"importante";
+  const lines = [];
+  const head = [];
+  if (p.raison) head.push(p.raison);
+  if (p.prenom || p.nom) head.push(((p.prenom||"") + " " + (p.nom||"")).trim());
+  if (p.adresse) head.push(p.adresse);
+  if (p.siren) head.push("SIREN/SIRET : " + p.siren);
+  if (p.tva) head.push("TVA : " + p.tva);
+  if (p.tel) head.push("Tél : " + p.tel);
+  if (p.site) head.push(p.site);
   if (kind === "depart"){
-    lines.push(`Objet : État des lieux de départ — véhicule ${d.brand} ${d.model} immatriculé ${d.plate}`);
+    lines.push(`Objet : État des lieux de départ — ${d.brand} ${d.model} ${d.plate} — réf ${d.ref}`);
+    lines.push("");
+    lines.push(...head);
     lines.push("");
     lines.push(`Madame, Monsieur ${d.clientName},`);
     lines.push("");
-    lines.push(`Nous vous confirmons la réalisation de l'état des lieux contradictoire de départ du véhicule ${d.brand} ${d.model} (${d.plate})${d.km?`, kilométrage relevé : ${d.km} km`:""}, effectué le ${fmtDateTime(dep.signedAt)}.`);
+    lines.push(`Nous vous confirmons la réalisation de l'état des lieux contradictoire de départ du véhicule ${d.brand} ${d.model} immatriculé ${d.plate} (dossier ${d.ref}).`);
+    lines.push("");
+    lines.push(`Remise du véhicule : ${dep.lieu || "lieu non précisé"}, le ${fmtDateTime(dep.at || dep.signedAt)}.`);
+    if (dep.km) lines.push(`Kilométrage relevé : ${dep.km} km. Carburant : ${fuelTxt(dep.fuel)}.`);
     lines.push("");
     lines.push(`L'inspection, réalisée par captation vidéo 360° et ${Object.keys(dep.photos).length} photographies sous angles normalisés puis analysée par notre système de détection, a référencé ${dep.damages.length} dégât(s) préexistant(s) :`);
     dep.damages.forEach(x => lines.push(`  n°${x.num} — ${x.type}, ${x.zone}, environ ${String(x.sizeCm).replace(".",",")} cm (${sevName(x.sev)})`));
     lines.push("");
-    lines.push(`En apposant votre signature électronique, vous reconnaissez que l'état du véhicule au moment de sa remise est conforme au présent constat, et qu'aucun autre dommage apparent n'a été relevé. Toute dégradation constatée lors de la restitution et absente du présent référentiel pourra vous être imputée dans les conditions prévues au contrat.`);
+    lines.push(`Le présent constat a été signé électroniquement par les deux parties : ${d.clientName} (client) et ${pn} (prestataire), le ${fmtDateTime(dep.signedAt)}.`);
+    lines.push("");
+    lines.push(`En apposant votre signature, vous reconnaissez que l'état du véhicule au moment de sa remise est conforme au présent constat et qu'aucun autre dommage apparent n'a été relevé. Toute dégradation constatée lors de la restitution et absente du présent référentiel pourra vous être imputée dans les conditions prévues au contrat.`);
   } else {
     const ret = d.retour;
     const checked = ret.damages.filter(x => x.isNew && ret.checked.includes(x.num));
-    lines.push(`Objet : État des lieux de restitution — véhicule ${d.brand} ${d.model} immatriculé ${d.plate}`);
+    lines.push(`Objet : État des lieux de restitution — ${d.brand} ${d.model} ${d.plate} — réf ${d.ref}`);
+    lines.push("");
+    lines.push(...head);
     lines.push("");
     lines.push(`Madame, Monsieur ${d.clientName},`);
     lines.push("");
-    lines.push(`Nous vous confirmons la réalisation de l'état des lieux contradictoire de restitution du véhicule ${d.brand} ${d.model} (${d.plate}), effectué le ${fmtDateTime(ret.signedAt)}, comparé au constat de départ signé le ${fmtDateTime(dep.signedAt)}.`);
+    lines.push(`Nous vous confirmons la réalisation de l'état des lieux contradictoire de restitution du véhicule ${d.brand} ${d.model} immatriculé ${d.plate} (dossier ${d.ref}), comparé au constat de départ signé le ${fmtDateTime(dep.signedAt)}.`);
+    lines.push("");
+    lines.push(`Restitution : ${ret.lieu || "lieu non précisé"}, le ${fmtDateTime(ret.at || ret.signedAt)}.`);
+    const kmInfo = [];
+    if (ret.km) kmInfo.push(`kilométrage ${ret.km} km`);
+    if (ret.km && dep.km && parseInt(ret.km) >= parseInt(dep.km)) kmInfo.push(`${parseInt(ret.km) - parseInt(dep.km)} km parcourus`);
+    if (ret.fuel != null) kmInfo.push(`carburant ${fuelTxt(ret.fuel)}${dep.fuel != null && ret.fuel < dep.fuel ? " (départ " + fuelTxt(dep.fuel) + ")" : ""}`);
+    if (kmInfo.length) lines.push(`Relevés : ${kmInfo.join(" · ")}.`);
     lines.push("");
     if (checked.length){
       lines.push(`L'analyse comparative a mis en évidence ${checked.length} dégât(s) non présent(s) au départ, retenu(s) en observation :`);
@@ -1017,30 +1294,61 @@ function letterText(d, kind){
       lines.push(`Observations : ${ret.observations.trim()}`);
     }
     lines.push("");
-    lines.push(`En apposant votre signature électronique, vous reconnaissez l'exactitude du présent constat de restitution ainsi que des observations qui y sont consignées.`);
+    lines.push(`Le présent constat a été signé électroniquement par les deux parties : ${d.clientName} (client) et ${pn} (prestataire), le ${fmtDateTime(ret.signedAt)}.`);
   }
   lines.push("");
   lines.push(`Cordialement,`);
-  lines.push(`Le service location — Constat 360°`);
+  lines.push(pn + " — via Constat 360°");
   return lines.join("\n");
 }
 function letterCard(d, kind){
   const txt = letterText(d, kind);
+  const subject = txt.split("\n")[0].replace("Objet : ","");
+  const to = encodeURIComponent(d.clientEmail || "");
+  const cc = encodeURIComponent((provider && provider.email) || "");
   return card(`
     <h3>Courrier ${kind === "depart" ? "de confirmation" : "de restitution"}</h3>
-    <p class="hint" style="margin:2px 0 14px">Envoyé à ${esc(d.clientEmail || "l'adresse du client")} après signature.</p>
+    <p class="hint" style="margin:2px 0 14px">Adressé au client (${esc(d.clientEmail || "email non renseigné")}) avec copie au prestataire (${esc((provider&&provider.email)||"—")}).</p>
     <div class="letter">${txt.split("\n").map(l => l.trim()==="" ? "" : `<p>${esc(l)}</p>`).join("")}
-      <div class="sign-line">Signature électronique horodatée — ${fmtDateTime((kind==="depart"?d.depart:d.retour).signedAt)}</div>
+      <div class="sign-line">Signatures électroniques horodatées — ${fmtDateTime((kind==="depart"?d.depart:d.retour).signedAt)}</div>
     </div>
-    <div style="margin-top:14px">
-      <a class="mailbtn" href="mailto:${encodeURIComponent(d.clientEmail||"")}?subject=${encodeURIComponent(txt.split("\n")[0].replace("Objet : ",""))}&body=${encodeURIComponent(txt)}">
-        <button class="btn secondary"><span>Ouvrir dans l'app Mail</span><span class="ic">↗</span></button>
+    <div style="margin-top:14px; display:flex; flex-direction:column; gap:8px">
+      <a class="mailbtn" href="mailto:${to}?cc=${cc}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(txt)}">
+        <button class="btn secondary"><span>Envoyer aux deux parties</span><span class="ic">✉</span></button>
       </a>
+      <button class="textbtn" id="printbtn">Imprimer / enregistrer en PDF</button>
     </div>
   `);
 }
+function wirePrint(){
+  const b = $("#printbtn");
+  if (b) b.addEventListener("click", () => window.print());
+}
+function fillPrintsheet(d, kind){
+  const p = provider || {};
+  const pd = kind === "depart" ? d.depart : d.retour;
+  if (!pd.signedAt){ $("#printsheet").innerHTML = ""; return; }
+  const txt = letterText(d, kind);
+  $("#printsheet").innerHTML = `
+    <div class="ph-head">
+      <div>
+        <div class="brand">${esc(providerName())}</div>
+        <div class="small">${esc(p.adresse||"")}<br>${p.siren?("SIREN/SIRET " + esc(p.siren) + " · "):""}${p.tva?("TVA " + esc(p.tva)):""}</div>
+      </div>
+      <div class="small" style="text-align:right">
+        Dossier ${esc(d.ref)}<br>${esc(d.plate)} — ${esc(d.brand)} ${esc(d.model)}<br>${fmtDate(pd.signedAt)}
+      </div>
+    </div>
+    ${txt.split("\n").map(l => l.trim()==="" ? "<br>" : `<div>${esc(l)}</div>`).join("")}
+    <div class="sigs">
+      <div><div class="small">Le client — ${esc(d.clientName)}</div>${pd.sigClient?`<img src="${pd.sigClient}">`:""}</div>
+      <div><div class="small">Le prestataire — ${esc(providerName())}</div>${pd.sigPresta?`<img src="${pd.sigPresta}">`:""}</div>
+    </div>
+    <br><div class="small">Document généré par Constat 360° — état des lieux contradictoire avec captation vidéo 360°, photographies normalisées et analyse assistée. Signatures électroniques horodatées le ${fmtDateTime(pd.signedAt)}.</div>
+  `;
+}
 
-/* ---------- Comparaison ---------- */
+/* ================= COMPARAISON ================= */
 SCREENS.compare = function(){
   const d = dossier(); const ret = d.retour;
   const news = ret.damages.filter(x => x.isNew);
@@ -1071,7 +1379,7 @@ SCREENS.compare = function(){
         <div class="kpi"><b data-count="${ret.damages.length}">0</b><span>total</span></div>
       </div></div>
       <span class="eyebrow rv">Nouveaux dégâts détectés</span>
-      ${newsHtml || card(`<h3>Aucun nouveau dégât</h3><p class="hint" style="margin:4px 0 0">Le véhicule est restitué dans l'état du constat de départ.</p>`)}
+      ${newsHtml || card(`<h3>Aucun nouveau dégât ✓</h3><p class="hint" style="margin:4px 0 0">Le véhicule est restitué dans l'état du constat de départ.</p>`)}
       ${card(`
         <h3>Déjà référencés au départ — inchangés</h3>
         ${olds.map(damageRow).join("")}
@@ -1082,7 +1390,7 @@ SCREENS.compare = function(){
         <textarea id="obs" placeholder="Aucune observation">${esc(obsDefault)}</textarea>
       `)}
     `,
-    actions: btn("toSignR","Faire signer la restitution"),
+    actions: btn("toSignR","Faire signer les deux parties"),
   });
   app.querySelectorAll("[data-chk]").forEach(el => el.addEventListener("change", () => {
     const num = parseInt(el.dataset.chk, 10);
@@ -1101,33 +1409,50 @@ SCREENS.compare = function(){
   });
 };
 
-/* ---------- Rapport final ---------- */
+/* ================= RAPPORT FINAL ================= */
 SCREENS.reportFinal = function(){
-  const d = dossier(); const ret = d.retour;
+  const d = dossier(); const ret = d.retour; const dep = d.depart;
   const news = ret.damages.filter(x => x.isNew);
   const kept = news.filter(x => ret.checked.includes(x.num));
+  const kmRun = (ret.km && dep.km && parseInt(ret.km) >= parseInt(dep.km)) ? (parseInt(ret.km) - parseInt(dep.km)) + " km" : null;
   shell({
-    title:"Rapport final de restitution", sub:`${d.plate} · ${fmtDate(ret.signedAt)}`, back:"dossier",
+    title:"Rapport final de restitution", sub:`${d.plate} · réf ${d.ref}`, back:"dossier",
     body:`
       <div class="shellc rv"><div class="corec tight kpis">
         <div class="kpi"><b data-count="${kept.length}">0</b><span>retenus</span></div>
-        <div class="kpi"><b data-count="${d.depart.damages.length}">0</b><span>au départ</span></div>
+        <div class="kpi"><b data-count="${dep.damages.length}">0</b><span>au départ</span></div>
         <div class="kpi"><b data-count="${ret.damages.length}">0</b><span>total retour</span></div>
       </div></div>
+      ${card(`
+        <h3>Conditions de restitution</h3>
+        ${factsGrid([
+          ["Lieu", ret.lieu || "—"],
+          ["Date & heure", ret.at ? fmtDateTime(ret.at) : "—"],
+          ["Km retour", ret.km ? ret.km + " km" : "—"],
+          ["Distance parcourue", kmRun || "—"],
+          ["Carburant retour", fuelTxt(ret.fuel)],
+          ["Carburant départ", fuelTxt(dep.fuel)],
+        ])}
+      `)}
       ${kept.length ? card(`
         <h3>Dégâts retenus en observation</h3>
         ${kept.map(damageRow).join("")}
-      `) : card(`<h3>Restitution conforme</h3><p class="hint" style="margin:4px 0 0">Aucun dégât nouveau retenu.</p>`)}
+      `) : card(`<h3>Restitution conforme ✓</h3><p class="hint" style="margin:4px 0 0">Aucun dégât nouveau retenu.</p>`)}
       ${ret.observations && ret.observations.trim() ? card(`<h3>Observations</h3><p class="hint" style="white-space:pre-wrap; color:var(--ink); margin:6px 0 0">${esc(ret.observations)}</p>`) : ""}
       ${card(`
-        <h3>Signé par ${esc(d.clientName)}</h3>
-        <p class="hint" style="margin:2px 0 12px">le ${fmtDateTime(ret.signedAt)}</p>
-        <img class="sig-img" src="${ret.signature}" alt="Signature">
+        <h3>Signatures</h3>
+        <div class="sig-pair">
+          <div><p class="sig-name">Client — ${esc(d.clientName)}</p><img class="sig-img" src="${ret.sigClient}" alt="Signature client" style="max-width:100%"></div>
+          <div><p class="sig-name">Prestataire — ${esc(providerName())}</p><img class="sig-img" src="${ret.sigPresta}" alt="Signature prestataire" style="max-width:100%"></div>
+        </div>
+        <p class="hint" style="margin:10px 0 0">Signé le ${fmtDateTime(ret.signedAt)}</p>
       `)}
       ${letterCard(d, "retour")}
     `,
     actions:`<button class="btn secondary" data-go="home"><span>Retour à l'accueil</span><span class="ic">←</span></button>`,
   });
+  fillPrintsheet(d, "retour");
+  wirePrint();
 };
 
 render();
