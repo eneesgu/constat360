@@ -75,7 +75,7 @@
    <rebind input="js1_y"/>
   </action>
   <action name="v_roll">
-   <rebind input="js1_x"/>
+   <rebind input="js1_rotz"/>
   </action>
   <action name="v_space_brake">
    <rebind input="js1_button5"/>
@@ -105,7 +105,7 @@
    <rebind input="js1_button16"/>
   </action>
   <action name="v_yaw">
-   <rebind input="js1_rotz"/>
+   <rebind input="js1_x"/>
   </action>
  </actionmap>
  <actionmap name="spaceship_quantum">

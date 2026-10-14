@@ -57,9 +57,9 @@ Chaque commande a un rôle, et pour chacune il existe une liste d'options cohér
 ### Axes
 | Axe | Action |
 |---|---|
-| X : incliner gauche / droite | **Roulis** : incliner à droite = le vaisseau s'incline à droite |
+| X : incliner gauche / droite | **Lacet** : incliner à droite = le nez tourne à droite |
 | Y : pousser / tirer | Tangage : pousser = piquer, tirer = cabrer |
-| Rz : torsion de la poignée | Lacet : le nez tourne à droite / à gauche |
+| Rz : torsion de la poignée | **Roulis** : tourner la poignée à droite = le vaisseau penche à droite |
 | Rx / Ry : mini-stick A1 en mode analogique | Translations gauche/droite et haut/bas (clic sur A1 pour passer en analogique ; re-clic pour revenir aux armes) |
 
 Si un axe part dans le mauvais sens, il existe une option « sens inversé » pour chacun.

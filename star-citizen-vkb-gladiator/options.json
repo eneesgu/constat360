@@ -3258,7 +3258,7 @@
   {
    "control": "AXES",
    "kind": "axis",
-   "theme_fr": "Piloter : incliner à droite = le vaisseau s'incline à droite",
+   "theme_fr": "Piloter : incliner le manche à gauche / droite = tourner le nez, tourner la poignée = pencher le vaisseau",
    "pool": [
     {
      "id": "roll",
@@ -3270,7 +3270,7 @@
       }
      ],
      "kbd": "Q / E",
-     "why_fr": "Incliner le manche à droite fait pencher le vaisseau à droite, comme un avion."
+     "why_fr": "Le vaisseau penche à gauche ou à droite, comme un avion."
     },
     {
      "id": "pitch",
@@ -3294,7 +3294,7 @@
       }
      ],
      "kbd": "flèches gauche / droite",
-     "why_fr": "Tourner la poignée à droite fait pivoter le nez à droite, sans pencher."
+     "why_fr": "Le nez pivote à gauche ou à droite, sans pencher."
     },
     {
      "id": "roll_inv",
@@ -3406,8 +3406,8 @@
     {
      "slot": "AX_X",
      "js": "x",
-     "recommended_id": "roll",
-     "note_fr": "1er axe (X) : incliner le manche à gauche / droite. C'est le changement que tu demandes : le jeu met le lacet ici par défaut."
+     "recommended_id": "yaw",
+     "note_fr": "1er axe (X) : incliner le manche à gauche / droite = le nez tourne à gauche / droite."
     },
     {
      "slot": "AX_Y",
@@ -3418,8 +3418,8 @@
     {
      "slot": "AX_TWIST",
      "js": "rotz",
-     "recommended_id": "yaw",
-     "note_fr": "6e axe (Rz) : tourner la poignée sur elle-même."
+     "recommended_id": "roll",
+     "note_fr": "6e axe (Rz) : tourner la poignée à gauche / droite = le vaisseau penche à gauche / droite."
     },
     {
      "slot": "AX_MINI_X",
