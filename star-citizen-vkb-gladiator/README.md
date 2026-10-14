@@ -1,122 +1,101 @@
 # VKB Gladiator NXT EVO (main droite) : profil Star Citizen
 
-Profil prêt à importer pour **Star Citizen 4.10.2** (version LIVE du 7 octobre 2026), avec un **VKB Gladiator NXT EVO, main droite, grip SCG**, sur le **profil d'usine VKB**. Le clavier reste à gauche (ZQSD/WASD, etc.).
+Profil pour **Star Citizen 4.10.2** (LIVE du 7 octobre 2026), **VKB Gladiator NXT EVO main droite, grip SCG, profil d'usine VKB**. Le clavier reste à gauche.
 
-- Fichier à importer : [`layout_VKB_NXT_EVO_R_FR_exported.xml`](layout_VKB_NXT_EVO_R_FR_exported.xml)
-- Pour régénérer après modification : `python3 generate_layout.py` (la table `BINDINGS` est la seule chose à éditer)
+Chaque commande a un rôle, et pour chacune il existe une liste d'options cohérentes (208 au total), toutes vérifiées une par une dans le `defaultProfile.xml` du jeu :
 
----
-
-## 1. Toutes les commandes de la manette
-
-Numéros = numérotation DirectInput du profil d'usine VKB (ce que Star Citizen affiche sous la forme `js1_buttonX`).
-
-| Étiquette | Type | Où | Numéros |
-|---|---|---|---|
-| Gâchette | 2 crans | index | 1er cran = **1**, 2e cran = **2** |
-| **A2** | gros bouton rouge | tête, en bas à gauche | **3** |
-| **B1** | bouton | avant de la tête, sous l'index (au-dessus du levier rapid fire) | **4** |
-| **D1** | bouton | bas de la poignée, petit doigt | **5** |
-| **A3** | chapeau 4 directions + clic | tête, **au milieu** | haut 6, droite 7, bas 8, gauche 9, clic **10** |
-| **A4** | chapeau 4 directions + clic | tête, en haut à droite | haut 11, droite 12, bas 13, gauche 14, clic 15 |
-| **C1** | chapeau 4 directions + clic | côté de la poignée, sous le pouce | haut 16, droite 17, bas 18, gauche 19, clic 20 |
-| Rapid fire | levier haut / bas | sous B1, index | haut 21, bas 22 |
-| **A1** | mini-stick (mode chapeau) | tête, en haut à gauche | chapeau `hat1` ; le clic bascule chapeau ↔ analogique (réglage VKB) |
-| **EN1** | encodeur rotatif (molette crantée) | socle, à droite | un sens 23, l'autre 24 |
-| **SW1** | interrupteur à rappel 3 positions | socle, à gauche | haut 25, bas 26 |
-| **F1 / F2 / F3** | boutons | dessus du socle (ordre physique : F2, F1, F3) | F1 27, F2 28, F3 29 |
-| Molette des gaz | axe analogique | socle, **au milieu** | axe `z` |
-| Manche | axes | — | X = `x`, Y = `y`, torsion = `rotz` |
-
-## 2. Pourquoi « ça ne fait plus ce que ça faisait avant »
-
-Star Citizen met des actions joystick **par défaut** sur les boutons 1 à 12. Après une mise à jour ou une remise à zéro des commandes, elles reviennent et entrent en conflit avec tes réglages. Sur ton VKB, ça donne :
-
-| Bouton | Ce que le jeu y met par défaut (4.10) |
+| Fichier | À quoi il sert |
 |---|---|
-| **A3 clic** (10) | **Translation vers le bas** : c'est pour ça que le ciblage sur A3 ne marchait pas |
-| A3 haut (6) | Mode interaction (touche F) |
-| A3 bas (8) | Boost |
-| A3 gauche (9) | Translation vers le haut |
-| **A2 rouge** (3) | Leurres + angle de scan + puissance laser de minage |
-| B1 (4) | Angle de scan / puissance de minage (moins) |
-| D1 (5) | Contre-mesure bruit |
-| Gâchette 2e cran (2) | Missile suivant (donc tu changeais de missile en appuyant à fond) |
-| A4 droite (12) | Train d'atterrissage |
+| `layout_VKB_NXT_EVO_R_FR_exported.xml` | le profil à importer dans le jeu (recommandations par défaut) |
+| `options.json` | toutes les options de chaque commande, avec la recommandation |
+| `choices.json` (facultatif) | tes choix quand ils diffèrent de la recommandation, ex. `{"D1": "vue_libre"}` ; `"none"` = laisser vide |
+| `generate_layout.py` | refait le profil à partir des deux fichiers ci-dessus : `python3 generate_layout.py` |
 
-Le profil ci-dessous réassigne ou efface **tous** ces conflits.
-
-## 3. Ce que je configure (proposition, à valider)
-
-« Selon le mode » = l'action dépend du mode opérateur actif (canons, missiles, minage, scan, quantum), exactement comme le clic gauche ou la molette de la souris dans le jeu.
-
-### Gâchette et index
-| Commande | Action | Équivalent clavier/souris | Alternatives possibles |
-|---|---|---|---|
-| Gâchette 1er cran | Tirer (canons) · lancer missiles (mode missiles) · sauter en quantum, maintenir (mode quantum) · scanner (mode scan) · laser de minage · récupération | clic gauche | — |
-| Gâchette 2e cran | **Rien** (libéré) | — | Tirer le groupe d'armes 2 · visée de précision maintenue |
-| Rapid fire haut | **Leurres** (appui = salve, maintien = régler la salve) | H | Missile suivant |
-| Rapid fire bas | **Bruit** (paillettes) | J | Nombre de missiles armés + |
-| **B1** | Canons : **verrouiller/déverrouiller le cardan** · Missiles : **type de missile suivant** · Minage : changer de laser | G / molette / Alt+clic | Visée de précision (clic droit) |
+## La disposition recommandée
 
 ### Tête du manche (pouce)
-| Commande | Action | Équivalent | Alternatives |
+| Commande | Rôle | Action recommandée | Clavier |
 |---|---|---|---|
-| **A2 rouge** | **Mode missiles on/off** (comme tu l'avais) | — | Mode opérateur suivant (clic molette) |
-| **A3 clic** | **Cibler** : comme la touche T (appui = cible sous le réticule/cible suivante en vue, maintenu = ciblage auto on/off) | T | Uniquement « verrouiller la cible sous le réticule » |
-| A3 haut | Ennemi suivant | 5 | Épingler la cible |
-| A3 bas | Attaquant suivant (qui te tire dessus) | 4 | Allié suivant |
-| A3 droite | Sous-cible suivante (composants) | R | Cible suivante en vue |
-| A3 gauche | Déverrouiller la cible | Alt gauche + T | Sous-cible précédente |
-| A4 haut | **NAV ↔ SCM** (maintenir ~¼ s) | B maintenu | — |
-| A4 droite | Train (appui) / atterrissage auto (maintien) | N | — |
-| A4 bas | Mode quantum (puis maintenir la gâchette pour sauter) | — | Carte stellaire |
-| A4 gauche | Mode scan | V | Ping radar (Tab) |
-| A4 clic | Mode découplé | C | Frein spatial (X) |
-| C1 haut | Énergie **armes** + (maintien = max) | F5 | — |
-| C1 droite | Énergie **boucliers** + (maintien = max) | F7 | — |
-| C1 gauche | Énergie **moteurs** + (maintien = max) | F6 | — |
-| C1 bas | Réinitialiser la répartition d'énergie | F8 | Frein spatial |
-| C1 clic | **Visée de précision** (zoom) on/off | clic droit | Verrou cardan |
-| A1 mini-stick | Translations haut / bas / gauche / droite | Espace / Ctrl / Q / D | En mode analogique : translations proportionnelles |
-| **D1** (petit doigt) | **Boost** (maintenir) | Shift gauche | Frein spatial |
+| **A2** rouge | Cibler | Appui court : verrouille la cible sous le réticule, le rond de tir apparaît · appui long : ciblage auto on/off | T |
+| **A3** clic | Scanner | Mode scan on/off | V |
+| A3 haut | | Onde radar (ping), maintenir puis relâcher | Tab |
+| A3 droite | | Ennemi le plus proche, puis suivant | 5 |
+| A3 gauche | | Tous les contacts détectés, un par un | 7 |
+| A3 bas | | Composant suivant de la cible | R |
+| **A1** haut | Armes | Mode canons (lasers / balistiques) | |
+| A1 bas | | Mode missiles / bombes | |
+| A1 droite / gauche | | Suivant / précédent selon le mode : groupe d'armes, type de missile ou de bombe, cône de scan, puissance du laser de minage | molette souris |
+| **A4** clic | Quantum et boucliers | NAV ↔ SCM (maintenir ¼ s) : en NAV, boucliers et armes coupés, quantum disponible | B maintenu |
+| A4 haut | | Mode quantum on/off (puis gâchette maintenue = saut) | |
+| A4 bas | | Boucliers on/off | O |
+| A4 droite / gauche | | Énergie boucliers / armes +1 (maintenir = max) | F7 / F5 |
+| **C1** clic | Atterrissage | Appui court : demande à la tour · maintenir : atterrissage auto | Alt+N / N maintenu |
+| C1 haut | | VTOL on/off | K |
+| C1 bas | | Mode précision auto on/off | |
+| C1 gauche | | Amarrage (court) / caméra d'amarrage (maintenu) | Alt Gr+N / 0 |
+| C1 droite | | Demande de zone de chargement | Alt Gr+N |
+
+### Index et petit doigt
+| Commande | Action recommandée | Clavier |
+|---|---|---|
+| Gâchette, 1er cran | Tir, ou action du mode actif (missile, saut quantique maintenu, scan, minage, récupération) | clic gauche |
+| Gâchette, 2e cran | Ajoute le groupe d'armes 2 (ex. lasers en groupe 1, balistiques en groupe 2) | |
+| **B1** | Boost, tant qu'on appuie | Shift gauche |
+| Rapid fire haut / bas | Leurres / bruit | H / J |
+| **D1** | Frein spatial, tant qu'on appuie | X |
 
 ### Socle
-| Commande | Action | Équivalent | Alternatives |
-|---|---|---|---|
-| Molette des gaz (milieu) | **Limiteur de vitesse** (absolu) | Alt + molette | Gaz avant/arrière · rien |
-| EN1 | « + / − » du mode actif : preset d'armes (canons) · nombre de missiles armés (missiles) · puissance laser (minage) · angle de scan (scan) | molette souris / G | Zoom |
-| SW1 haut | Prêt au vol (démarrage) | Alt droite + R | Allumer/éteindre tout (U) |
-| SW1 bas | Demander l'atterrissage | Alt gauche + N | Ouvrir/fermer les portes |
-| F1 | Phares | L | — |
-| F2 | Ouvrir/fermer toutes les portes | (aucune par défaut) | Verrouiller les portes |
-| F3 | VTOL | K | Carte stellaire (F2) |
+| Commande | Action recommandée | Clavier |
+|---|---|---|
+| **F1** | Train d'atterrissage sortir / rentrer | N |
+| **F2** | HUD avancé on/off (cockpit plus détaillé) | aucune |
+| **F3** | Prêt au vol (démarrer le vaisseau) | Alt Gr+R |
+| **SW1** haut / bas | Fermer / ouvrir toutes les portes | aucune |
+| Molette du milieu | Limiteur de vitesse (en bas = lent, en haut = plein régime) | Alt+molette |
+| **EN1** | Limiteur d'accélération + / − | Alt Gr+molette |
 
 ### Axes
-- Manche gauche/droite = **lacet** (yaw), avant/arrière = **tangage** (pitch), **torsion = roulis** (roll) : réglage par défaut du jeu.
-- Alternative très répandue : gauche/droite = roulis et torsion = lacet. Dis-le-moi et j'inverse.
+| Axe | Action |
+|---|---|
+| X : incliner gauche / droite | **Roulis** : incliner à droite = le vaisseau s'incline à droite |
+| Y : pousser / tirer | Tangage : pousser = piquer, tirer = cabrer |
+| Rz : torsion de la poignée | Lacet : le nez tourne à droite / à gauche |
+| Rx / Ry : mini-stick A1 en mode analogique | Translations gauche/droite et haut/bas (clic sur A1 pour passer en analogique ; re-clic pour revenir aux armes) |
 
-## 4. Installation
+Si un axe part dans le mauvais sens, il existe une option « sens inversé » pour chacun.
 
-1. **Ferme Star Citizen.**
-2. **Sauvegarde** ton fichier actuel : `C:\Program Files\Roberts Space Industries\StarCitizen\LIVE\user\client\0\Profiles\default\actionmaps.xml` (copie-le ailleurs).
-3. Copie `layout_VKB_NXT_EVO_R_FR_exported.xml` dans
-   `C:\Program Files\Roberts Space Industries\StarCitizen\LIVE\user\client\0\Controls\Mappings\`
-   (crée le dossier `Mappings` s'il n'existe pas ; adapte le chemin si le jeu est installé ailleurs).
-4. Lance le jeu → **Options → Keybindings (Commandes) → Advanced Controls Customization → Control Profiles** → choisis `VKB_NXT_EVO_R_FR` → importe-le (si le jeu te demande quels périphériques importer, coche le joystick).
-   Autre méthode : console (touche `²`/`~`) → `pp_rebindkeys layout_VKB_NXT_EVO_R_FR_exported`
-5. Si tu as **plusieurs joysticks / volants / pédales branchés**, le VKB n'est peut-être pas `js1`. Vérifie dans l'écran des commandes : clique sur une action et appuie sur la gâchette ; si le jeu affiche `js2_button1`, dis-le-moi et je régénère le fichier pour `js2`.
+## Changer une commande
 
-## 5. Réglages à vérifier
+Ouvre la page interactive (`profil-gladiator.html`, ou le lien que je t'ai donné), choisis dans le menu de chaque direction, puis **Copier mes choix** et colle le texte dans la conversation : je refais le profil. La page prévient si une même action se retrouve sur deux boutons, ce que le jeu n'accepte pas.
 
-- **VKBDevCfg** (logiciel VKB) : ton manche doit être sur le **profil d'usine**. Si tu avais bricolé quelque chose dedans (« la magouille »), les numéros peuvent être différents.
-- **Vérifier les numéros** : Windows → `Win + R` → `joy.cpl` → Propriétés : appuie sur chaque bouton et note le numéro qui s'allume. S'il ne correspond pas au tableau de la section 1, envoie-moi les numéros.
-- **Molette des gaz** : si ton vaisseau est très lent, tourne la molette vers le haut (c'est le limiteur de vitesse). Si elle marche à l'envers : Options → Keybindings → Advanced Controls Customization → réglages du joystick → inverser l'axe du limiteur.
-- **EN1** : si « + » et « − » sont inversés, dis-le-moi, j'inverse 23 et 24.
-- **Zones mortes** : avec un VKB neuf, aucune n'est nécessaire. Si le vaisseau dérive au repos, mets une petite zone morte (2-3 %) sur X/Y dans les réglages du joystick du jeu.
+## Tester hors jeu
+
+1. **Testeur de la page** : ouvre `profil-gladiator.html` sur ton PC avec Chrome ou Edge, clique sur « Démarrer le test », appuie sur chaque bouton. La page affiche le nom du bouton (ex. « A3 · clic »), son numéro et l'action qu'il fera. Chaque bouton testé passe au vert, et les barres des 6 axes bougent avec le manche.
+2. **Sans rien installer** : Win + R → `joy.cpl` → VKB → Propriétés. Vérifie que les numéros correspondent : gâchette 1 et 2, A2 = 3, B1 = 4, D1 = 5, A3 = 6 à 10 (clic = 10), A4 = 11 à 15, C1 = 16 à 20, rapid fire = 21/22, EN1 = 23/24, SW1 = 25/26, F1 = 27, F2 = 28, F3 = 29, A1 = chapeau (POV).
+3. **Le profil lui-même** ne peut être vraiment testé qu'en jeu. Après l'import, l'écran des commandes affiche `js1_button10` à côté de « Toggle Scanning Operator Mode », etc.
+
+Si un numéro ne correspond pas, envoie-le-moi : ta manette n'est alors pas sur la numérotation d'usine, et j'adapte le profil.
+
+## Installation
+
+1. Ferme le jeu. Sauvegarde `...\StarCitizen\LIVE\user\client\0\Profiles\default\actionmaps.xml`.
+2. Copie `layout_VKB_NXT_EVO_R_FR_exported.xml` dans `...\StarCitizen\LIVE\user\client\0\Controls\Mappings\`.
+3. En jeu : Options → Keybindings → Advanced Controls Customization → Control Profiles → `VKB_NXT_EVO_R_FR` → importer (cocher le joystick).
+   Ou console : `pp_rebindkeys layout_VKB_NXT_EVO_R_FR_exported`
+4. Plusieurs joysticks branchés ? Si le jeu affiche `js2_…` pour la gâchette, le profil doit être refait pour js2.
+
+Le profil efface tout seul les actions joystick que le jeu met par défaut sur ces boutons (translations sur A3, leurres sur A2, boost, mode interaction, réglages de minage et de scan), pour que chaque bouton ne fasse que ce qui est prévu.
+
+## Points à confirmer en jeu
+
+- Le HUD avancé (F2) est la meilleure piste pour le « cockpit plus détaillé », mais son affichage exact en 4.10 n'a pas pu être vérifié.
+- Bombes : dans les fichiers 4.10, elles passent par le mode missiles (A1 bas). Ça dépend du vaisseau.
+- En NAV, les guides 4.10 disent que boucliers et armes sont coupés. Selon le patch, le mode quantum peut déjà être actif en NAV.
+- EN1 : on ne sait pas quel sens physique envoie 23 ou 24. Si c'est inversé, dis-le.
 
 ## Sources
 
-- Schéma et numérotation du NXT EVO R : [BindSight (w00zla)](https://github.com/w00zla/BindSight), [sc-mapper (hamlet2k)](https://github.com/hamlet2k/sc-mapper), [diagramme VKB du projet x4_vkb](https://github.com/codejnki/x4_vkb), [modèle NXT Premium (franklesniak)](https://github.com/franklesniak/HOTAS-HOSAS_Control_Mapping_Template_Files), forum VKB ([A2 = bouton 3, SW1 haut = 25](http://forum.vkb-sim.pro/viewtopic.php?t=7523), [SW1/EN1](http://forum.vkb-sim.pro/viewtopic.php?t=8338))
-- Actions et assignations par défaut du jeu : `defaultProfile.xml` de Star Citizen 4.10.2 (build 4.10.196.36804), via [sc-mapper](https://github.com/hamlet2k/sc-mapper/tree/main/data/game)
-- Composition du socle EVO (3 boutons, interrupteur 3 positions, molette des gaz, encodeur) : [fiche VIP Pilot](https://vippilot.com/products/gladiator-nxt-evo-base-only/), [test PC Gamer](https://www.pcgamer.com/hardware/controllers/vkb-gladiator-nxt-evo-f-14-combat-edition-stecs-throttle-system-review/)
+- Actions, assignations par défaut et réglages des axes : `defaultProfile.xml` de Star Citizen 4.10.2 (build 4.10.196.36804), via [sc-mapper](https://github.com/hamlet2k/sc-mapper/tree/main/data/game)
+- Numérotation du NXT EVO R : [BindSight](https://github.com/w00zla/BindSight), [diagramme VKB (x4_vkb)](https://github.com/codejnki/x4_vkb), [modèle NXT Premium](https://github.com/franklesniak/HOTAS-HOSAS_Control_Mapping_Template_Files), forum VKB ([A2 = 3, SW1 = 25](http://forum.vkb-sim.pro/viewtopic.php?t=7523), [SW1/EN1](http://forum.vkb-sim.pro/viewtopic.php?t=8338))
+- Socle EVO (3 boutons, interrupteur 3 positions, molette, encodeur) : [VIP Pilot](https://vippilot.com/products/gladiator-nxt-evo-base-only/), [PC Gamer](https://www.pcgamer.com/hardware/controllers/vkb-gladiator-nxt-evo-f-14-combat-edition-stecs-throttle-system-review/)
+- Liste des commandes 4.10 (HUD avancé, mode précision) : [scfocus.org](https://scfocus.org/star-citizen-key-bindings/)

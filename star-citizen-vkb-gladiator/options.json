@@ -1,0 +1,3488 @@
+{
+ "game": "Star Citizen 4.10.2 (4.10.196.36804)",
+ "device": "VKB Gladiator NXT EVO R (SCG), profil d'usine",
+ "controls": [
+  {
+   "control": "A2",
+   "kind": "button",
+   "theme_fr": "Gros bouton rouge = la touche T : verrouiller la cible sous le réticule pour faire apparaître le rond de tir",
+   "pool": [
+    {
+     "id": "t_lock",
+     "label_fr": "Cibler sous le réticule (T court)",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_in_view_reset"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_in_view_fwd"
+      }
+     ],
+     "kbd": "t (appui court)",
+     "why_fr": "C'est exactement l'appui court sur T : verrouille ce qui est sous le viseur, sinon passe au vaisseau suivant visible, et le rond de tir apparaît sur la cible."
+    },
+    {
+     "id": "auto_target_long",
+     "label_fr": "Ciblage auto on/off (T long)",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_auto_targeting_toggle_long"
+      }
+     ],
+     "kbd": "t (appui long)",
+     "why_fr": "Comme T maintenu : l'appui long sur le même bouton allume ou éteint le ciblage automatique sans gêner l'appui court."
+    },
+    {
+     "id": "under_reticle",
+     "label_fr": "Verrouiller pile sous le viseur",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_under_reticle"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Ne prend que ce qui est exactement sous le viseur et ne saute jamais vers une autre cible."
+    },
+    {
+     "id": "in_view_reset_only",
+     "label_fr": "Toujours la cible la plus proche du viseur",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_in_view_reset"
+      }
+     ],
+     "kbd": "t (la moitié de T)",
+     "why_fr": "Chaque appui reprend le vaisseau sous le réticule, sans faire défiler les autres."
+    },
+    {
+     "id": "lock_selected",
+     "label_fr": "Verrouiller la cible présélectionnée",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_lock_selected"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Verrouille le vaisseau que le jeu a déjà sélectionné pour toi, ce qui fait apparaître le rond de tir dessus."
+    },
+    {
+     "id": "in_view_back",
+     "label_fr": "Cible visible précédente",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_in_view_back"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Revient au vaisseau visible d'avant si T est allé un cran trop loin."
+    },
+    {
+     "id": "hostile_nearest",
+     "label_fr": "Ennemi le plus proche",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_hostile_reset"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_hostile_fwd"
+      }
+     ],
+     "kbd": "5",
+     "why_fr": "Verrouille l'ennemi le plus proche même s'il n'est pas devant toi (à retirer alors de A3)."
+    },
+    {
+     "id": "attacker_nearest",
+     "label_fr": "Celui qui me tire dessus",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_attacker_reset"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_attacker_fwd"
+      }
+     ],
+     "kbd": "4",
+     "why_fr": "Verrouille directement le vaisseau qui est en train de t'attaquer."
+    },
+    {
+     "id": "lock_pin1",
+     "label_fr": "Reprendre la cible épinglée 1",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_toggle_lock_index_1"
+      }
+     ],
+     "kbd": "1",
+     "why_fr": "Revient en un appui sur ta cible prioritaire épinglée."
+    },
+    {
+     "id": "pin_hold",
+     "label_fr": "Épingler la cible (appui long)",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_pin_selected_hold"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "En appui long, garde la cible marquée à l'écran ; se combine avec un appui court de ciblage sur le même bouton."
+    },
+    {
+     "id": "padlock",
+     "label_fr": "Vue accrochée à la cible",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_look_ahead_start_target_tracking"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Ta vue suit la cible verrouillée pour ne pas la perdre en combat tournoyant (appui = on/off, maintien = temporaire)."
+    },
+    {
+     "id": "ads_toggle",
+     "label_fr": "Visée de précision (zoom)",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_ads_toggle"
+      }
+     ],
+     "kbd": "mouse2",
+     "why_fr": "Le zoom de visée sous le pouce aide à viser loin sans lâcher le manche."
+    },
+    {
+     "id": "auto_target_short",
+     "label_fr": "Ciblage auto on/off (appui court)",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_auto_targeting_toggle_short"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Même fonction que T long mais sur un appui court, si tu veux un bouton qui ne sert qu'à ça."
+    },
+    {
+     "id": "unlock",
+     "label_fr": "Lâcher la cible",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_unlock"
+      }
+     ],
+     "kbd": "lalt+t",
+     "why_fr": "Libère la cible actuelle pour repartir de zéro."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "A2",
+     "js": "button3",
+     "recommended_id": "t_lock",
+     "note_fr": "Appui court et sec (moins de 0,25 s) : verrouille la cible sous le réticule, sinon la suivante visible ; le rond de tir s'affiche sur elle."
+    },
+    {
+     "slot": "A2_LONG",
+     "js": "button3",
+     "recommended_id": "auto_target_long",
+     "note_fr": "Appui long (0,25 s ou plus) : ciblage automatique on/off, comme T maintenu. Un appui trop lent ne verrouille rien et bascule le ciblage auto."
+    }
+   ]
+  },
+  {
+   "control": "A3",
+   "kind": "hat",
+   "theme_fr": "Chapeau central = le scanner : mode scan, onde radar, repérage des contacts et choix des cibles",
+   "pool": [
+    {
+     "id": "scan_mode",
+     "label_fr": "Mode scan on/off",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_toggle_scan_mode"
+      }
+     ],
+     "kbd": "v",
+     "why_fr": "On entre et on sort du mode scanner d'un clic, c'est la base du chapeau scanner."
+    },
+    {
+     "id": "ping",
+     "label_fr": "Onde radar (ping)",
+     "actions": [
+      {
+       "map": "spaceship_radar",
+       "action": "v_invoke_ping"
+      }
+     ],
+     "kbd": "tab",
+     "why_fr": "Maintenir puis relâcher envoie l'onde qui fait apparaître les signatures de la zone, même trop loin pour être scannées."
+    },
+    {
+     "id": "hostile",
+     "label_fr": "Ennemi le plus proche, puis suivant",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_hostile_fwd"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_hostile_reset"
+      }
+     ],
+     "kbd": "5",
+     "why_fr": "Verrouille l'ennemi détecté le plus proche puis le suivant à chaque appui."
+    },
+    {
+     "id": "all_contacts",
+     "label_fr": "Tous les contacts, un par un",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_all_fwd"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_all_reset"
+      }
+     ],
+     "kbd": "7",
+     "why_fr": "Fait défiler tout ce que le radar a détecté (amis, neutres, ennemis) : c'est le repérage de la zone, contact par contact, avant de scanner."
+    },
+    {
+     "id": "subtarget",
+     "label_fr": "Composant suivant de la cible",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_subitem_fwd"
+      }
+     ],
+     "kbd": "r",
+     "why_fr": "Vise un composant précis du vaisseau verrouillé : moteurs, générateur de bouclier, armes."
+    },
+    {
+     "id": "attacker",
+     "label_fr": "Attaquant le plus proche, puis suivant",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_attacker_fwd"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_attacker_reset"
+      }
+     ],
+     "kbd": "4",
+     "why_fr": "Fait défiler ceux qui te tirent dessus, le plus proche d'abord ; plus combat que repérage."
+    },
+    {
+     "id": "friendly",
+     "label_fr": "Allié suivant",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_friendly_fwd"
+      },
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_friendly_reset"
+      }
+     ],
+     "kbd": "6",
+     "why_fr": "Retrouve vite tes équipiers en escadrille."
+    },
+    {
+     "id": "hostile_back",
+     "label_fr": "Ennemi précédent",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_hostile_back"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Revient à l'ennemi d'avant si tu l'as dépassé dans la liste."
+    },
+    {
+     "id": "all_back",
+     "label_fr": "Contact précédent",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_all_back"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Le sens inverse de « tous les contacts », pour revenir sur un vaisseau repéré."
+    },
+    {
+     "id": "subtarget_reset",
+     "label_fr": "Revenir au vaisseau entier",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_subitem_reset"
+      }
+     ],
+     "kbd": "lalt+r",
+     "why_fr": "Quitte le composant visé et revient à la cible complète."
+    },
+    {
+     "id": "pin1",
+     "label_fr": "Épingler la cible (1)",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_toggle_pin_index_1"
+      }
+     ],
+     "kbd": "lalt+1",
+     "why_fr": "Garde un vaisseau repéré marqué à l'écran pour le suivre."
+    },
+    {
+     "id": "pinned_cycle",
+     "label_fr": "Cibles épinglées suivantes",
+     "actions": [
+      {
+       "map": "spaceship_targeting_advanced",
+       "action": "v_target_cycle_pinned_fwd"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Passe d'une cible épinglée à l'autre."
+    },
+    {
+     "id": "remove_pins",
+     "label_fr": "Effacer les épingles",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_remove_all_pins"
+      }
+     ],
+     "kbd": "0",
+     "why_fr": "Nettoie tous les marquages de cibles d'un coup."
+    },
+    {
+     "id": "unlock",
+     "label_fr": "Lâcher la cible",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_target_unlock"
+      }
+     ],
+     "kbd": "lalt+t",
+     "why_fr": "Libère la cible pour en reprendre une autre au scanner."
+    },
+    {
+     "id": "scan_set",
+     "label_fr": "Forcer le mode scan",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_set_scan_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Met toujours en mode scan, sans aller-retour ; pour en sortir, A1 haut te remet en canons."
+    },
+    {
+     "id": "mfd_scan_page",
+     "label_fr": "Écran cockpit : page Scan",
+     "actions": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_scanning_short"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Met la page Scan sur l'écran du cockpit pour lire le résultat du scan."
+    },
+    {
+     "id": "hail",
+     "label_fr": "Appeler la cible",
+     "actions": [
+      {
+       "map": "spaceship_target_hailing",
+       "action": "v_target_hail"
+      }
+     ],
+     "kbd": "9",
+     "why_fr": "Contacte par radio le vaisseau que tu viens de repérer."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "A3_PUSH",
+     "js": "button10",
+     "recommended_id": "scan_mode",
+     "note_fr": "Clic du chapeau : entrer/sortir du mode scan (V)."
+    },
+    {
+     "slot": "A3_UP",
+     "js": "button6",
+     "recommended_id": "ping",
+     "note_fr": "Maintenir puis relâcher : onde radar (Tab)."
+    },
+    {
+     "slot": "A3_RIGHT",
+     "js": "button7",
+     "recommended_id": "hostile",
+     "note_fr": "Ennemi le plus proche, puis suivant (5)."
+    },
+    {
+     "slot": "A3_LEFT",
+     "js": "button9",
+     "recommended_id": "all_contacts",
+     "note_fr": "Tout ce qui est détecté, le plus proche d'abord (7) : repérer la zone."
+    },
+    {
+     "slot": "A3_DOWN",
+     "js": "button8",
+     "recommended_id": "subtarget",
+     "note_fr": "Composant suivant de la cible verrouillée (R)."
+    }
+   ]
+  },
+  {
+   "control": "A1",
+   "kind": "hat",
+   "theme_fr": "Mini-stick = choix des armes : haut canons, bas missiles/bombes, gauche/droite on change dans la famille",
+   "pool": [
+    {
+     "id": "set_guns",
+     "label_fr": "Mode canons",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_set_guns_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Passe tout de suite aux canons (lasers et balistiques), d'où que tu viennes, scan compris."
+    },
+    {
+     "id": "set_missiles",
+     "label_fr": "Mode missiles / bombes",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_set_missile_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Passe aux missiles, où se trouvent aussi les bombes ; en bas, comme une bombe qui tombe."
+    },
+    {
+     "id": "next_in_mode",
+     "label_fr": "Suivant / plus (selon le mode)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_next"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_cycle_missile_fwd"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_inc_scan_focus_level"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_increase_mining_throttle"
+      }
+     ],
+     "kbd": "mwheel_down (groupe / missile suivant) ; mwheel_up (cône de scan +)",
+     "why_fr": "Comme la molette souris selon le mode : groupe d'armes suivant en canons, type de missile/bombe suivant en missiles, cône de scan plus large en scan, laser plus puissant en minage."
+    },
+    {
+     "id": "prev_in_mode",
+     "label_fr": "Précédent / moins (selon le mode)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_prev"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_cycle_missile_back"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_dec_scan_focus_level"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_decrease_mining_throttle"
+      }
+     ],
+     "kbd": "mwheel_up (groupe / missile précédent) ; mwheel_down (cône de scan -)",
+     "why_fr": "L'inverse du suivant, dans le même mode."
+    },
+    {
+     "id": "next_weapon_only",
+     "label_fr": "Suivant (armes seulement)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_next"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_cycle_missile_fwd"
+      }
+     ],
+     "kbd": "mwheel_down",
+     "why_fr": "Même chose sans toucher au scan, si l'angle de scan va sur la molette EN1."
+    },
+    {
+     "id": "prev_weapon_only",
+     "label_fr": "Précédent (armes seulement)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_prev"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_cycle_missile_back"
+      }
+     ],
+     "kbd": "mwheel_up",
+     "why_fr": "L'inverse, sans le scan."
+    },
+    {
+     "id": "next_overflow",
+     "label_fr": "Groupe suivant en boucle",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_next_overflow"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_cycle_missile_fwd"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Repart au premier groupe après le dernier (le « suivant » normal s'arrête au dernier) : pratique si une seule direction sert à changer."
+    },
+    {
+     "id": "toggle_missile",
+     "label_fr": "Canons <-> missiles",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_toggle_missile_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Un seul geste pour aller et revenir entre canons et missiles."
+    },
+    {
+     "id": "op_next",
+     "label_fr": "Mode suivant",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_operator_mode_cycle_forward"
+      }
+     ],
+     "kbd": "mouse3",
+     "why_fr": "Fait tourner tous les modes (canons, missiles, scan...) comme le clic molette."
+    },
+    {
+     "id": "op_prev",
+     "label_fr": "Mode précédent",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_operator_mode_cycle_back"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Fait tourner les modes dans l'autre sens."
+    },
+    {
+     "id": "group1",
+     "label_fr": "Groupe d'armes 1",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_guns0"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Choix direct d'un groupe, par exemple tous les lasers."
+    },
+    {
+     "id": "group2",
+     "label_fr": "Groupe d'armes 2",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_guns1"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Choix direct d'un autre groupe, par exemple les balistiques."
+    },
+    {
+     "id": "group3",
+     "label_fr": "Groupe d'armes 3",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_guns2"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Troisième groupe pour les vaisseaux très armés."
+    },
+    {
+     "id": "group4",
+     "label_fr": "Groupe d'armes 4",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_guns3"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Quatrième groupe, par exemple toutes les armes ensemble."
+    },
+    {
+     "id": "g_key",
+     "label_fr": "Cardans / missiles armés + (G)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_gimbals_state_toggle"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_increase_max_missiles"
+      }
+     ],
+     "kbd": "g",
+     "why_fr": "Comme la touche G : bloque/libère les canons orientables en mode canons, arme un missile de plus en mode missiles."
+    },
+    {
+     "id": "missiles_less",
+     "label_fr": "Missiles armés -",
+     "actions": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_decrease_max_missiles"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Réduit le nombre de missiles partant à chaque tir."
+    },
+    {
+     "id": "aim_mode",
+     "label_fr": "Mode de visée (PIP / peinture / auto)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_aim_type_cycle"
+      }
+     ],
+     "kbd": "ralt+g",
+     "why_fr": "Fait défiler les modes de visée : rond de tir, peinture, automatique."
+    },
+    {
+     "id": "bomb_point",
+     "label_fr": "Bombes : point d'impact",
+     "actions": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_bombing_toggle_desired_impact_point"
+      }
+     ],
+     "kbd": "lalt+b",
+     "why_fr": "Affiche ou retire le point d'impact voulu sur l'affichage de bombardement."
+    },
+    {
+     "id": "emp_preset",
+     "label_fr": "Sélection EMP",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_emp"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Sélectionne directement l'EMP sur les vaisseaux qui en ont."
+    },
+    {
+     "id": "qid_preset",
+     "label_fr": "Sélection inhibiteur quantique",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_qid"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Sélectionne l'inhibiteur quantique (QID) sur les vaisseaux d'interception."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "A1_UP",
+     "js": "hat1_up",
+     "recommended_id": "set_guns",
+     "note_fr": "Haut = canons (lasers / balistiques)."
+    },
+    {
+     "slot": "A1_DOWN",
+     "js": "hat1_down",
+     "recommended_id": "set_missiles",
+     "note_fr": "Bas = missiles et bombes."
+    },
+    {
+     "slot": "A1_RIGHT",
+     "js": "hat1_right",
+     "recommended_id": "next_in_mode",
+     "note_fr": "Droite = suivant : groupe d'armes, type de missile/bombe, ou cône de scan plus large selon le mode."
+    },
+    {
+     "slot": "A1_LEFT",
+     "js": "hat1_left",
+     "recommended_id": "prev_in_mode",
+     "note_fr": "Gauche = précédent, dans le même mode."
+    }
+   ]
+  },
+  {
+   "control": "A4",
+   "kind": "hat",
+   "theme_fr": "Chapeau des modes et de l'énergie : NAV/SCM (le 'mode quantique' qui coupe les boucliers), mode quantique, boucliers on/off, priorités d'énergie",
+   "pool": [
+    {
+     "id": "master_mode_long",
+     "label_fr": "NAV / SCM (maintenir)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_master_mode_cycle_long"
+      }
+     ],
+     "kbd": "B (maintenu)",
+     "why_fr": "C'est le vrai 'mode quantique qui coupe les boucliers' : en NAV le quantique est disponible mais boucliers et armes sont coupés, en SCM tout revient. L'appui long évite de changer de mode par erreur en combat."
+    },
+    {
+     "id": "quantum_mode",
+     "label_fr": "Mode opérateur quantique on/off",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_toggle_quantum_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "En NAV, sélectionne directement le mode quantique (QT) sans faire défiler les modes au clic molette ; ensuite la gâchette maintenue lance le saut."
+    },
+    {
+     "id": "shields_toggle",
+     "label_fr": "Boucliers on/off (alimentation)",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_power_toggle_shields"
+      }
+     ],
+     "kbd": "O",
+     "why_fr": "C'est ta demande : couper ou rallumer l'alimentation des boucliers d'un seul geste, sans lâcher le manche."
+    },
+    {
+     "id": "pwr_shields",
+     "label_fr": "Énergie boucliers +1 / max",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_shields_increase"
+      },
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_shields_max"
+      }
+     ],
+     "kbd": "F7 (court) / F7 (maintenu)",
+     "why_fr": "Le geste défensif en combat : un appui court donne +1 point aux boucliers, maintenu tout part dans les boucliers."
+    },
+    {
+     "id": "pwr_weapons",
+     "label_fr": "Énergie armes +1 / max",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_weapons_increase"
+      },
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_weapons_max"
+      }
+     ],
+     "kbd": "F5 (court) / F5 (maintenu)",
+     "why_fr": "Le pendant offensif : plus d'énergie aux armes pour tirer plus longtemps quand tu prends l'avantage."
+    },
+    {
+     "id": "pwr_engines",
+     "label_fr": "Énergie moteurs +1 / max",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_engine_increase"
+      },
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_engine_max"
+      }
+     ],
+     "kbd": "F6 (court) / F6 (maintenu)",
+     "why_fr": "Pour poursuivre ou fuir : l'énergie va aux moteurs, même logique court/maintenu que les autres priorités."
+    },
+    {
+     "id": "pwr_reset",
+     "label_fr": "Énergie équilibrée (reset)",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_reset"
+      }
+     ],
+     "kbd": "F8",
+     "why_fr": "Remet la répartition d'énergie à l'équilibre après avoir tout mis dans un système."
+    },
+    {
+     "id": "shields_on",
+     "label_fr": "Boucliers ON (forcer)",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_power_set_shields_on"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Version sans risque : ce bouton ne peut que rallumer les boucliers, jamais les couper par erreur."
+    },
+    {
+     "id": "master_nav",
+     "label_fr": "Forcer le mode NAV",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_master_mode_set_nav"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Passe directement en NAV (voyage) sans bascule, si tu préfères un bouton par mode."
+    },
+    {
+     "id": "master_scm",
+     "label_fr": "Forcer le mode SCM (combat)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_master_mode_set_scm"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Revient toujours en mode combat, boucliers et armes actifs, sans risque de partir en NAV."
+    },
+    {
+     "id": "quantum_set",
+     "label_fr": "Entrer en mode quantique (sans bascule)",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_set_quantum_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Variante qui ne fait qu'entrer en mode quantique : un double appui ne peut pas t'en faire ressortir."
+    },
+    {
+     "id": "flight_mode",
+     "label_fr": "Mode opérateur Vol (FLT) on/off",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_toggle_flight_mode"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "En NAV, passe du mode quantique au mode Vol : pleine poussée pour voyager vite sans saut quantique, puis retour au QT."
+    },
+    {
+     "id": "weapons_toggle",
+     "label_fr": "Armes on/off (alimentation)",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_power_toggle_weapons"
+      }
+     ],
+     "kbd": "P",
+     "why_fr": "Même famille que boucliers on/off : couper les armes pour économiser l'énergie ou réduire ta signature."
+    },
+    {
+     "id": "thrusters_toggle",
+     "label_fr": "Propulseurs on/off (alimentation)",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_power_toggle_thrusters"
+      }
+     ],
+     "kbd": "I",
+     "why_fr": "Couper les propulseurs pour rester discret (signature basse) ; attention, tu ne manoeuvres plus tant qu'ils sont coupés."
+    },
+    {
+     "id": "gsafe_toggle",
+     "label_fr": "Sécurité G (GSAFE) on/off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_toggle_gforce_safety"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Un vrai 'mode' de vol : sans la sécurité G le vaisseau tourne plus fort mais tu risques le voile noir ; à remettre après le combat."
+    },
+    {
+     "id": "jump_request",
+     "label_fr": "Demande de saut (point de saut)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_toggle_jump_request"
+      }
+     ],
+     "kbd": "Clic gauche (mouse1)",
+     "why_fr": "Même univers que le quantique : sert devant un point de saut pour passer d'un système à l'autre (Stanton, Pyro...)."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "A4_PUSH",
+     "js": "button15",
+     "recommended_id": "master_mode_long",
+     "note_fr": "Maintenir ~0,25 s pour passer NAV <-> SCM ; un appui court ne fait rien (sécurité en combat)."
+    },
+    {
+     "slot": "A4_UP",
+     "js": "button11",
+     "recommended_id": "quantum_mode",
+     "note_fr": "Haut = partir. En NAV, sélectionne le mode quantique s'il n'est pas déjà actif, puis maintiens la gâchette pour sauter."
+    },
+    {
+     "slot": "A4_DOWN",
+     "js": "button13",
+     "recommended_id": "shields_toggle",
+     "note_fr": "Bascule instantanée de l'alimentation des boucliers (le jeu n'a pas de version appui long) : attention aux appuis en diagonale en plein combat."
+    },
+    {
+     "slot": "A4_RIGHT",
+     "js": "button12",
+     "recommended_id": "pwr_shields",
+     "note_fr": "Court = +1 point aux boucliers, maintenu ~0,25 s = tout aux boucliers. Par défaut le jeu met aussi le train et l'atterrissage auto sur ce bouton : voir la note pour le générateur."
+    },
+    {
+     "slot": "A4_LEFT",
+     "js": "button14",
+     "recommended_id": "pwr_weapons",
+     "note_fr": "Court = +1 point aux armes, maintenu = tout aux armes. Défense à droite, attaque à gauche."
+    }
+   ]
+  },
+  {
+   "control": "C1",
+   "kind": "hat",
+   "theme_fr": "Chapeau d'arrivée et de départ : tour de contrôle + atterrissage auto, VTOL, amarrage, chargement, mode précision",
+   "pool": [
+    {
+     "id": "atc_autoland",
+     "label_fr": "Tour (court) + atterrissage auto (maintenu)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_request"
+      },
+      {
+       "map": "spaceship_movement",
+       "action": "v_autoland"
+      }
+     ],
+     "kbd": "LAlt+N (court) / N (maintenu)",
+     "why_fr": "Comme la touche N : un seul bouton pour toute l'arrivée, appui court pour demander un pad (ou l'autorisation de décoller), appui long pour que le vaisseau se pose tout seul."
+    },
+    {
+     "id": "autoland",
+     "label_fr": "Atterrissage auto seul (maintenir)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_autoland"
+      }
+     ],
+     "kbd": "N (maintenu)",
+     "why_fr": "Si tu préfères une direction dédiée (par exemple C1 bas = se poser). À ne jamais mettre en plus de '« Tour (court) + atterrissage auto (maintenu) »', sinon l'action serait sur deux boutons."
+    },
+    {
+     "id": "atc_request",
+     "label_fr": "Demande d'atterrissage / décollage seule",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_request"
+      }
+     ],
+     "kbd": "LAlt+N",
+     "why_fr": "La tour sur son propre bouton, à utiliser seulement avec 'autoland' seul et jamais avec '« Tour (court) + atterrissage auto (maintenu) »'."
+    },
+    {
+     "id": "docking",
+     "label_fr": "Amarrage : demande (court) / caméra d'amarrage (maintenu)",
+     "actions": [
+      {
+       "map": "spaceship_docking",
+       "action": "v_toggle_docking_request"
+      },
+      {
+       "map": "spaceship_docking",
+       "action": "v_dock_toggle_view"
+      }
+     ],
+     "kbd": "RAlt+N (court) / 0 (maintenu)",
+     "why_fr": "Pour s'amarrer à un port de station : un appui court demande, annule ou détache, un appui long affiche la caméra pour viser le port."
+    },
+    {
+     "id": "cargo_request",
+     "label_fr": "Demande de zone de chargement",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_loading_area_request"
+      }
+     ],
+     "kbd": "RAlt+N",
+     "why_fr": "Même famille que la demande à la tour : réserve une zone de chargement de cargo en station ou en avant-poste."
+    },
+    {
+     "id": "vtol",
+     "label_fr": "VTOL on/off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_vtol_toggle"
+      }
+     ],
+     "kbd": "K",
+     "why_fr": "Haut = monter à la verticale : sur les vaisseaux équipés, les réacteurs pivotent pour décoller et se poser plus facilement."
+    },
+    {
+     "id": "auto_precision",
+     "label_fr": "Mode précision auto on/off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_auto_precision_mode_toggle"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Quand le train est sorti, le jeu bride la vitesse pour l'approche ; ce bouton coupe ou remet cette bride automatique."
+    },
+    {
+     "id": "gear_pair",
+     "label_fr": "Train : sortir (bas) / rentrer (haut)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_deploy_landing_system"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_retract_landing_system"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Une vraie manette de train sur l'axe haut/bas, sans bascule. Seulement si F1 ne porte pas déjà le train (sinon doublon, ou conflit si F1 utilise 'rentrer le train')."
+    },
+    {
+     "id": "transform",
+     "label_fr": "Changer de configuration (ailes, modules)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_transform_cycle"
+      }
+     ],
+     "kbd": "LAlt+K",
+     "why_fr": "Sur les vaisseaux qui se replient ou se déplient, à faire justement avant de se poser ou après le décollage."
+    },
+    {
+     "id": "proximity_assist",
+     "label_fr": "Assistance de proximité on/off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_proximity_assist_toggle"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "L'aide qui freine près des obstacles : utile dans les hangars étroits, à couper si elle te gêne."
+    },
+    {
+     "id": "doors",
+     "label_fr": "Portes / rampe ouvrir-fermer",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_toggle_all_doors"
+      }
+     ],
+     "kbd": "",
+     "why_fr": "Juste après l'atterrissage pour ouvrir la rampe. Normalement prévu sur le socle (groupe socle) : à ne prendre ici que s'il n'y est pas."
+    },
+    {
+     "id": "flight_ready",
+     "label_fr": "Vaisseau prêt au vol (allumage)",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_flightready"
+      }
+     ],
+     "kbd": "RAlt+R",
+     "why_fr": "Première étape avant de décoller. Normalement prévu sur le socle : alternative seulement, jamais en double."
+    },
+    {
+     "id": "landing_lights",
+     "label_fr": "Phares on/off",
+     "actions": [
+      {
+       "map": "lights_controller",
+       "action": "v_lights"
+      }
+     ],
+     "kbd": "L",
+     "why_fr": "Pour se poser de nuit ou dans une grotte. Normalement prévu sur le socle : alternative seulement, jamais en double."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "C1_PUSH",
+     "js": "button20",
+     "recommended_id": "atc_autoland",
+     "note_fr": "Court = appeler la tour (pad à l'arrivée, autorisation au départ) ; maintenu ~0,25 s = atterrissage auto. C'est 'le bouton C1 = atterrissage auto' que tu voulais."
+    },
+    {
+     "slot": "C1_UP",
+     "js": "button16",
+     "recommended_id": "vtol",
+     "note_fr": "Haut = décollage vertical (seulement sur les vaisseaux équipés de VTOL)."
+    },
+    {
+     "slot": "C1_DOWN",
+     "js": "button18",
+     "recommended_id": "auto_precision",
+     "note_fr": "Coupe ou remet la bride de vitesse automatique quand le train est sorti (approche de pad)."
+    },
+    {
+     "slot": "C1_LEFT",
+     "js": "button19",
+     "recommended_id": "docking",
+     "note_fr": "Court = demander, annuler ou quitter l'amarrage ; maintenu = caméra d'amarrage."
+    },
+    {
+     "slot": "C1_RIGHT",
+     "js": "button17",
+     "recommended_id": "cargo_request",
+     "note_fr": "Demande de zone de chargement en station ou en avant-poste."
+    }
+   ]
+  },
+  {
+   "control": "TRIGGER",
+   "kind": "trigger",
+   "theme_fr": "Gâchette : l'action principale du mode actif ; en tirant à fond, plus de puissance de feu",
+   "pool": [
+    {
+     "id": "tir_tous_modes",
+     "label_fr": "Tir / action selon le mode",
+     "kbd": "mouse1 (clic gauche)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_attack"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_toggle_launch_missile"
+      },
+      {
+       "map": "spaceship_quantum",
+       "action": "v_toggle_qdrive_engagement"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_scanning_trigger_scan"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_toggle_mining_laser_fire"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_toggle_fire_focused"
+      }
+     ],
+     "why_fr": "La gâchette fait l'action principale du mode actif (canons, missiles et bombes, scan, minage, récupération ou saut quantique), exactement comme le clic gauche du jeu, et suit le préréglage d'armes choisi sur A1."
+    },
+    {
+     "id": "tir_tous_modes_groupe1",
+     "label_fr": "Groupe d'armes 1 fixe / action selon le mode",
+     "kbd": "mouse1 (hors mode Canons)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns0"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_toggle_launch_missile"
+      },
+      {
+       "map": "spaceship_quantum",
+       "action": "v_toggle_qdrive_engagement"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_scanning_trigger_scan"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_toggle_mining_laser_fire"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_toggle_fire_focused"
+      }
+     ],
+     "why_fr": "Un vrai tir à deux étages : le 1er cran tire toujours le groupe 1 (par exemple les lasers) et le 2e cran ajoute le groupe 2. En échange, le préréglage choisi sur A1 ne change plus ce que tire la gâchette."
+    },
+    {
+     "id": "tir_sans_missile",
+     "label_fr": "Tir / action selon le mode, sans missile au 1er cran",
+     "kbd": "mouse1",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_attack"
+      },
+      {
+       "map": "spaceship_quantum",
+       "action": "v_toggle_qdrive_engagement"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_scanning_trigger_scan"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_toggle_mining_laser_fire"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_toggle_fire_focused"
+      }
+     ],
+     "why_fr": "Comme la gâchette standard, mais en mode Missiles le 1er cran ne lance rien. Le missile part seulement en tirant à fond, avec « Groupe 2 (Canons) / lancer missile (Missiles), à fond » ou « Groupe 2 (Canons) / missile à fond + maintien » au 2e cran."
+    },
+    {
+     "id": "tir_tous_modes_missile_maintien",
+     "label_fr": "Tir selon le mode, missile après un court maintien",
+     "kbd": "mouse1",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_attack"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_launch_missile"
+      },
+      {
+       "map": "spaceship_quantum",
+       "action": "v_toggle_qdrive_engagement"
+      },
+      {
+       "map": "spaceship_scanning",
+       "action": "v_scanning_trigger_scan"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_toggle_mining_laser_fire"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_toggle_fire_focused"
+      }
+     ],
+     "why_fr": "Même gâchette, mais en mode Missiles il faut la garder serrée un court instant (appui long) pour lancer. Un coup de gâchette par réflexe ne gaspille pas de missile."
+    },
+    {
+     "id": "tir_groupe2",
+     "label_fr": "Ajouter le groupe d'armes 2",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns1"
+      }
+     ],
+     "why_fr": "En tirant à fond, tu ajoutes le groupe 2 (par exemple les balistiques) au tir du 1er cran : plus tu serres, plus tu envoies de feu."
+    },
+    {
+     "id": "tir_groupe3",
+     "label_fr": "Ajouter le groupe d'armes 3",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns2"
+      }
+     ],
+     "why_fr": "Un 3e groupe (canons lourds, armes spéciales) que tu gardes pour le coup de grâce en tirant à fond."
+    },
+    {
+     "id": "tir_groupe4",
+     "label_fr": "Ajouter le groupe d'armes 4",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns3"
+      }
+     ],
+     "why_fr": "Même idée avec le groupe 4, pour les gros vaisseaux qui ont beaucoup d'armes."
+    },
+    {
+     "id": "groupe2_et_missile_cran2",
+     "label_fr": "Groupe 2 (Canons) / lancer missile (Missiles), à fond",
+     "kbd": "mouse1 (missile)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns1"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_toggle_launch_missile"
+      }
+     ],
+     "why_fr": "En mode Canons, le 2e cran ajoute le groupe 2. En mode Missiles, le missile ou la bombe ne part qu'en tirant à fond, jamais au 1er cran. À utiliser avec « Tir / action selon le mode, sans missile au 1er cran » au 1er cran."
+    },
+    {
+     "id": "groupe2_et_missile_maintien",
+     "label_fr": "Groupe 2 (Canons) / missile à fond + maintien",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns1"
+      },
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_launch_missile"
+      }
+     ],
+     "why_fr": "La version la plus sûre : en mode Missiles, il faut tirer à fond et garder un court instant pour lancer. À utiliser avec « Tir / action selon le mode, sans missile au 1er cran » au 1er cran."
+    },
+    {
+     "id": "groupe2_et_fracture",
+     "label_fr": "Groupe 2 (Canons) / outil de fracture (Récupération)",
+     "kbd": "ralt+w (fracture)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns1"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_toggle_fire_fracture"
+      }
+     ],
+     "why_fr": "En mode Canons, le 2e cran ajoute le groupe 2. En mode Récupération, il déclenche l'outil de fracture sans lâcher la visée, sur les vaisseaux qui en ont un."
+    },
+    {
+     "id": "sans_assist_visee",
+     "label_fr": "Couper l'aide à la visée (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_suppress_aim_assists_hold"
+      }
+     ],
+     "why_fr": "Tant que tu serres à fond, les aides de visée automatiques sont coupées, pour les tirs que tu veux placer toi-même."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "TRIG1",
+     "js": "button1",
+     "recommended_id": "tir_tous_modes",
+     "note_fr": "1er cran : tire ou agit dans chaque mode (saut quantique = garder serré un court instant)."
+    },
+    {
+     "slot": "TRIG2",
+     "js": "button2",
+     "recommended_id": "tir_groupe2",
+     "note_fr": "2e cran, atteint seulement en tirant à fond : ajoute le groupe d'armes 2 au tir déjà en cours (mode Canons)."
+    }
+   ]
+  },
+  {
+   "control": "B1",
+   "kind": "button",
+   "theme_fr": "Bouton d'index : accélération et commandes à maintenir en vol",
+   "pool": [
+    {
+     "id": "boost",
+     "label_fr": "Boost (maintenir)",
+     "kbd": "lshift",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_afterburner"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_boost"
+      }
+     ],
+     "why_fr": "Le boost se garde enfoncé pendant une accélération ou un virage serré. L'index le tient sans effort, et il sert aussi de boost en véhicule terrestre."
+    },
+    {
+     "id": "gaz_avant",
+     "label_fr": "Avancer / gaz (maintenir)",
+     "kbd": "w",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_forward"
+      }
+     ],
+     "why_fr": "Si pour toi « accélération » veut dire avancer : tant que tu appuies, le vaisseau accélère vers l'avant, comme la touche d'avance du clavier."
+    },
+    {
+     "id": "frein_spatial",
+     "label_fr": "Frein spatial (maintenir)",
+     "kbd": "x",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_space_brake"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_brake"
+      }
+     ],
+     "why_fr": "Pour freiner d'un coup avec l'index. Il sert aussi de frein en véhicule terrestre."
+    },
+    {
+     "id": "decouple",
+     "label_fr": "Mode découplé on/off",
+     "kbd": "c",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_vector_decoupling_toggle"
+      }
+     ],
+     "why_fr": "Un appui pour continuer sur ta trajectoire tout en tournant le nez vers l'ennemi."
+    },
+    {
+     "id": "vue_libre",
+     "label_fr": "Vue libre (maintenir)",
+     "kbd": "z",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_freelook_mode"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_view_freelook_mode"
+      }
+     ],
+     "why_fr": "Tant que tu maintiens, le manche tourne la tête du pilote au lieu du vaisseau : tu regardes autour de toi sans TrackIR."
+    },
+    {
+     "id": "esp_maintien",
+     "label_fr": "Aide E.S.P. (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_esp_hold"
+      }
+     ],
+     "why_fr": "Active l'aide qui adoucit le manche près de la cible, seulement au moment où tu en as besoin."
+    },
+    {
+     "id": "visee_precision",
+     "label_fr": "Visée de précision (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_ads_hold"
+      }
+     ],
+     "why_fr": "Zoome sur la cible tant que tu appuies, pour viser loin."
+    },
+    {
+     "id": "regard_arriere",
+     "label_fr": "Regarder derrière (maintenir)",
+     "kbd": "comma",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_view_look_behind"
+      }
+     ],
+     "why_fr": "Un coup d'œil derrière pour voir qui te poursuit, tant que tu maintiens (avec un léger délai)."
+    },
+    {
+     "id": "bloquer_rotation",
+     "label_fr": "Bloquer la rotation",
+     "kbd": "rshift",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_lock_rotation"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_lock_rotation"
+      }
+     ],
+     "why_fr": "Fige le tangage et le lacet pour stabiliser le vaisseau d'un coup : un appui bascule, un maintien bloque le temps de l'appui."
+    },
+    {
+     "id": "croisiere",
+     "label_fr": "Régulateur de vitesse on/off",
+     "kbd": "lalt+c",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_swap_mode"
+      }
+     ],
+     "why_fr": "Garde la vitesse sans tenir la touche d'avance, pratique sur les longs trajets."
+    },
+    {
+     "id": "leurres",
+     "label_fr": "Leurres",
+     "kbd": "h",
+     "actions": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_launch"
+      }
+     ],
+     "why_fr": "Si tu préfères les contre-mesures sur un vrai bouton plutôt que sur le levier."
+    },
+    {
+     "id": "monter",
+     "label_fr": "Monter (propulseurs verticaux)",
+     "kbd": "space",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_up"
+      }
+     ],
+     "why_fr": "Pousse le vaisseau vers le haut tant que tu appuies, pour esquiver ou décoller."
+    },
+    {
+     "id": "securite_g",
+     "label_fr": "Sécurité anti-G on/off",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_toggle_gforce_safety"
+      }
+     ],
+     "why_fr": "Coupe la protection contre le voile noir pour tourner plus serré, à tes risques."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "B1",
+     "js": "button4",
+     "recommended_id": "boost",
+     "note_fr": "Maintenir pour booster (vaisseau et véhicule terrestre)."
+    }
+   ]
+  },
+  {
+   "control": "RAPID_FIRE",
+   "kind": "two_way",
+   "theme_fr": "Levier d'index : réflexes défensifs instantanés (contre-mesures)",
+   "pool": [
+    {
+     "id": "cm_leurre_bruit",
+     "label_fr": "Haut : leurres / Bas : bruit",
+     "kbd": "h / j",
+     "actions": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_launch"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_noise_launch"
+      }
+     ],
+     "why_fr": "C'est le geste le plus rapide de l'index : un missile arrive, tu lâches leurres ou bruit sans quitter la gâchette."
+    },
+    {
+     "id": "leurre_panique",
+     "label_fr": "Haut : leurres / Bas : leurres en masse",
+     "kbd": "h / -",
+     "actions": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_launch"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_launch_panic"
+      }
+     ],
+     "why_fr": "Bas vide une grosse partie des leurres d'un coup quand plusieurs missiles arrivent."
+    },
+    {
+     "id": "salve_leurres",
+     "label_fr": "Taille de la salve de leurres + / -",
+     "kbd": "ralt+h / lalt+h",
+     "actions": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_burst_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_burst_decrease"
+      }
+     ],
+     "why_fr": "Règle combien de leurres partent à chaque salve, comme un plus et un moins."
+    },
+    {
+     "id": "boost_frein",
+     "label_fr": "Haut : boost / Bas : frein spatial",
+     "kbd": "lshift / x",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_afterburner"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_boost"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_space_brake"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_brake"
+      }
+     ],
+     "why_fr": "Accélérer et freiner du même doigt, chaque sens tenu tant que tu maintiens le levier. À prendre si tu mets autre chose sur B1."
+    },
+    {
+     "id": "groupes_3_4",
+     "label_fr": "Haut : tir groupe 3 / Bas : tir groupe 4",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns2"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_preset_fire_guns3"
+      }
+     ],
+     "why_fr": "« Rapid fire » au sens propre : l'index tire deux groupes d'armes spéciales, en plus de la gâchette."
+    },
+    {
+     "id": "missiles_armes",
+     "label_fr": "Haut : + de missiles armés / Bas : - de missiles armés",
+     "kbd": "g / -",
+     "actions": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_increase_max_missiles"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_decrease_max_missiles"
+      }
+     ],
+     "why_fr": "En mode Missiles, chaque coup de levier arme un missile de plus ou de moins pour la prochaine salve."
+    },
+    {
+     "id": "vue_libre_arriere",
+     "label_fr": "Haut : vue libre / Bas : regarder derrière",
+     "kbd": "z / comma",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_freelook_mode"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "seat_general",
+       "action": "v_view_look_behind"
+      }
+     ],
+     "why_fr": "Les deux façons de regarder autour de toi, chacune tenue tant que tu maintiens le levier."
+    },
+    {
+     "id": "frein_decouple",
+     "label_fr": "Haut : frein spatial / Bas : découplé on/off",
+     "kbd": "x / c",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_space_brake"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_vector_decoupling_toggle"
+      }
+     ],
+     "why_fr": "Les deux gestes de pilotage de combat les plus courants, à portée d'index."
+    },
+    {
+     "id": "decouple_on_off",
+     "label_fr": "Haut : découplé ON / Bas : découplé OFF",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_vector_decoupling_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_vector_decoupling_off"
+      }
+     ],
+     "why_fr": "Un sens = un état : tu sais toujours dans quel mode tu es sans regarder le HUD."
+    },
+    {
+     "id": "croisiere_on_off",
+     "label_fr": "Haut : régulateur ON / Bas : régulateur OFF",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_set_sticky"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_set_normal"
+      }
+     ],
+     "why_fr": "Allume ou coupe le maintien de vitesse sans hésiter sur l'état."
+    },
+    {
+     "id": "trim_fixer_relacher",
+     "label_fr": "Haut : fixer le trim / Bas : relâcher le trim",
+     "kbd": "- / x",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_trim_set_short"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_trim_reset_short"
+      }
+     ],
+     "why_fr": "Haut garde la poussée actuelle, bas la relâche : un vrai « régulateur » sous le doigt."
+    },
+    {
+     "id": "monter_descendre",
+     "label_fr": "Haut : monter / Bas : descendre",
+     "kbd": "space / lctrl",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_up"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_down"
+      }
+     ],
+     "why_fr": "Le levier va en haut et en bas, et les propulseurs verticaux suivent le même sens : pas besoin de réfléchir."
+    },
+    {
+     "id": "cardan_fixe_libre",
+     "label_fr": "Haut : canons fixes / Bas : canons orientables",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_gimbals_state_set_locked"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_gimbals_state_set_unlocked"
+      }
+     ],
+     "why_fr": "Choix direct de l'état des cardans, sans passer par une bascule."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "RAPID_FIRE",
+     "js": "button21/22",
+     "recommended_id": "cm_leurre_bruit",
+     "note_fr": "Haut = leurres. Si l'autre sens te vient plus naturellement en main, inverse simplement haut et bas. Bas = bruit (l'action « b » de la même option)."
+    }
+   ]
+  },
+  {
+   "control": "D1",
+   "kind": "button",
+   "theme_fr": "Petit doigt : bouton à maintenir pour freiner ou changer la façon de piloter",
+   "pool": [
+    {
+     "id": "frein_spatial",
+     "label_fr": "Frein spatial (maintenir)",
+     "kbd": "x",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_space_brake"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_brake"
+      }
+     ],
+     "why_fr": "Le petit doigt serre naturellement et tient le frein pendant que tu pilotes. Avec le boost sous l'index, tu peux accélérer et freiner depuis le manche."
+    },
+    {
+     "id": "vue_libre",
+     "label_fr": "Vue libre (maintenir)",
+     "kbd": "z",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_freelook_mode"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_view_freelook_mode"
+      }
+     ],
+     "why_fr": "Tant que tu serres le petit doigt, le manche bouge ta tête au lieu du vaisseau. Idéal sans TrackIR pour repérer les vaisseaux autour."
+    },
+    {
+     "id": "decouple",
+     "label_fr": "Mode découplé on/off",
+     "kbd": "c",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_vector_decoupling_toggle"
+      }
+     ],
+     "why_fr": "Un appui pour glisser sur ta trajectoire et pivoter librement pendant un combat."
+    },
+    {
+     "id": "esp_maintien",
+     "label_fr": "Aide E.S.P. (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_esp_hold"
+      }
+     ],
+     "why_fr": "Adoucit le manche près de la cible seulement pendant que tu serres, pour finir un adversaire."
+    },
+    {
+     "id": "sans_assist_visee",
+     "label_fr": "Couper l'aide à la visée (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_suppress_aim_assists_hold"
+      }
+     ],
+     "why_fr": "Tant que tu serres le petit doigt, les aides de visée automatiques sont coupées, et l'index tire exactement où tu vises."
+    },
+    {
+     "id": "regard_arriere",
+     "label_fr": "Regarder derrière (maintenir)",
+     "kbd": "comma",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_view_look_behind"
+      }
+     ],
+     "why_fr": "Un coup d'œil derrière toi tant que tu maintiens (avec un léger délai)."
+    },
+    {
+     "id": "bloquer_rotation",
+     "label_fr": "Bloquer la rotation",
+     "kbd": "rshift",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_lock_rotation"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_lock_rotation"
+      }
+     ],
+     "why_fr": "Fige le tangage et le lacet pour reprendre le contrôle d'un vaisseau qui part en vrille."
+    },
+    {
+     "id": "visee_precision",
+     "label_fr": "Visée de précision (maintenir)",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_ads_hold"
+      }
+     ],
+     "why_fr": "Zoom de visée tenu par le petit doigt pendant que l'index tire."
+    },
+    {
+     "id": "securite_g",
+     "label_fr": "Sécurité anti-G on/off",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_toggle_gforce_safety"
+      }
+     ],
+     "why_fr": "Coupe ou remet la protection contre le voile noir, pour des virages plus serrés."
+    },
+    {
+     "id": "croisiere",
+     "label_fr": "Régulateur de vitesse on/off",
+     "kbd": "lalt+c",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_swap_mode"
+      }
+     ],
+     "why_fr": "Garde ta vitesse sans tenir la touche d'avance."
+    },
+    {
+     "id": "trim_court_long",
+     "label_fr": "Trim : appui court relâche / appui long fixe",
+     "kbd": "x (court)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_trim_reset_short"
+      },
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_trim_set_long"
+      }
+     ],
+     "why_fr": "Deux usages sur un bouton sans conflit : un appui long garde la poussée actuelle, un appui court la relâche."
+    },
+    {
+     "id": "poursuite_cible",
+     "label_fr": "Suivre la cible du regard",
+     "kbd": "",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_look_ahead_start_target_tracking"
+      }
+     ],
+     "why_fr": "Ta tête reste tournée vers la cible verrouillée pour ne pas la perdre de vue en virage. Un appui bascule, un maintien la suit le temps de l'appui."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "D1",
+     "js": "button5",
+     "recommended_id": "frein_spatial",
+     "note_fr": "Maintenir pour freiner (vaisseau et véhicule terrestre)."
+    }
+   ]
+  },
+  {
+   "control": "F1",
+   "kind": "button",
+   "theme_fr": "Bouton du milieu du socle : le train d'atterrissage et la préparation de l'approche.",
+   "pool": [
+    {
+     "id": "gear_toggle",
+     "label_fr": "Train d'atterrissage sortir/rentrer",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_toggle_landing_system"
+      }
+     ],
+     "why_fr": "Ton souhait : un appui sort ou rentre les roues, exactement comme un appui court sur N.",
+     "kbd": "n (appui court)"
+    },
+    {
+     "id": "gear_toggle_autoland",
+     "label_fr": "Train (court) + atterrissage auto (long)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_toggle_landing_system"
+      },
+      {
+       "map": "spaceship_movement",
+       "action": "v_autoland"
+      }
+     ],
+     "why_fr": "Copie exacte de la touche N ; seulement si C1 ne prend pas l'atterrissage auto (une action ne va que sur un seul bouton du joystick).",
+     "kbd": "n / n maintenu"
+    },
+    {
+     "id": "gear_retract",
+     "label_fr": "Rentrer le train (seulement)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_retract_landing_system"
+      }
+     ],
+     "why_fr": "Ta phrase mot pour mot : rentre les roues sans risque de les ressortir par erreur ; on les sort avec N.",
+     "kbd": ""
+    },
+    {
+     "id": "gear_deploy",
+     "label_fr": "Sortir le train (seulement)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_deploy_landing_system"
+      }
+     ],
+     "why_fr": "L'inverse : un appui = roues sorties à coup sûr, utile en approche quand on ne sait plus si le train est sorti.",
+     "kbd": ""
+    },
+    {
+     "id": "vtol_toggle",
+     "label_fr": "Mode VTOL on/off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_vtol_toggle"
+      }
+     ],
+     "why_fr": "Oriente les moteurs pour l'atterrissage vertical sur les vaisseaux équipés : même moment que le train.",
+     "kbd": "k"
+    },
+    {
+     "id": "transform_cycle",
+     "label_fr": "Déplier/replier le vaisseau (configuration)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_transform_cycle"
+      }
+     ],
+     "why_fr": "Replie ailes ou bras des vaisseaux transformables avant de se poser, geste de préparation comme le train.",
+     "kbd": "lalt+k"
+    },
+    {
+     "id": "atc_request",
+     "label_fr": "Demander l'atterrissage (tour de contrôle)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_request"
+      }
+     ],
+     "why_fr": "Se fait juste avant de sortir le train ; seulement si C1 ne le prend pas.",
+     "kbd": "lalt+n"
+    },
+    {
+     "id": "atc_cargo",
+     "label_fr": "Demander une zone de chargement cargo",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_loading_area_request"
+      }
+     ],
+     "why_fr": "Pour les transporteurs : un seul appel en arrivant, rien d'urgent.",
+     "kbd": "ralt+n"
+    },
+    {
+     "id": "docking",
+     "label_fr": "Amarrage (court) + caméra d'amarrage (long)",
+     "actions": [
+      {
+       "map": "spaceship_docking",
+       "action": "v_toggle_docking_request"
+      },
+      {
+       "map": "spaceship_docking",
+       "action": "v_dock_toggle_view"
+      }
+     ],
+     "why_fr": "Court = demande d'amarrage, long = caméra d'amarrage : les deux servent au même moment, calmement.",
+     "kbd": "ralt+n / 0 maintenu"
+    },
+    {
+     "id": "autoland_only",
+     "label_fr": "Atterrissage auto (appui long seulement)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_autoland"
+      }
+     ],
+     "why_fr": "Si tu préfères échanger avec C1 : atterrissage auto ici, train sur C1. Un appui court ne fait rien.",
+     "kbd": "n maintenu"
+    },
+    {
+     "id": "doors_toggle",
+     "label_fr": "Ouvrir/fermer toutes les portes",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_toggle_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_toggle_all_doors"
+      }
+     ],
+     "why_fr": "Une fois posé on ouvre la rampe : suite logique du train, et aucune touche clavier n'existe.",
+     "kbd": ""
+    }
+   ],
+   "slots": [
+    {
+     "slot": "F1",
+     "js": "button27",
+     "recommended_id": "gear_toggle",
+     "note_fr": "Bouton du milieu (ordre physique F2, F1, F3). Appui court = comme N : sort ou rentre les roues."
+    }
+   ]
+  },
+  {
+   "control": "F2",
+   "kind": "button",
+   "theme_fr": "Bouton de gauche du socle : ce que le cockpit et le HUD affichent.",
+   "pool": [
+    {
+     "id": "advanced_hud",
+     "label_fr": "HUD avancé on/off (cockpit détaillé)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_flight_advanced_hud_toggle"
+      }
+     ],
+     "why_fr": "C'est ton « cockpit détaillé » : ajoute au HUD accélérations, assiette, vitesse verticale, altitude sol et mer, pression ; aucune touche par défaut.",
+     "kbd": ""
+    },
+    {
+     "id": "pitch_ladder",
+     "label_fr": "Échelle d'assiette : mode suivant",
+     "actions": [
+      {
+       "map": "spaceship_hud",
+       "action": "v_cycle_pitch_ladder_mode"
+      }
+     ],
+     "why_fr": "Chaque appui passe à l'état suivant (off, HUD, direction du regard, mixte) : encore plus d'infos de pilotage.",
+     "kbd": ""
+    },
+    {
+     "id": "light_amp",
+     "label_fr": "Amplification de lumière (vision nocturne)",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_light_amplification_toggle"
+      }
+     ],
+     "why_fr": "Éclaircit la vue dans le noir ; c'est peut-être l'effet « lettre » que tu as vu (Alt Gr+L).",
+     "kbd": "ralt+l"
+    },
+    {
+     "id": "interaction_mode",
+     "label_fr": "Mode interaction (maintenir, comme F)",
+     "actions": [
+      {
+       "map": "player_choice",
+       "action": "pc_interaction_mode"
+      }
+     ],
+     "why_fr": "Fait apparaître le curseur pour utiliser les boutons et écrans du cockpit ; reste actif tant que tu maintiens.",
+     "kbd": "f (maintenu)"
+    },
+    {
+     "id": "gunnery_zoom",
+     "label_fr": "Agrandir l'interface de tir on/off",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_ui_scale_toggle"
+      }
+     ],
+     "why_fr": "Grossit l'affichage de tir pour mieux le lire (actif en mode canons).",
+     "kbd": ""
+    },
+    {
+     "id": "mfd_status",
+     "label_fr": "Écran MFD : état du vaisseau (court) / état de la cible (long)",
+     "actions": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_self_status_short"
+      },
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_target_status_long"
+      }
+     ],
+     "why_fr": "Affiche directement la bonne page sur les écrans du cockpit, sans les feuilleter.",
+     "kbd": ""
+    },
+    {
+     "id": "mfd_config",
+     "label_fr": "Écran MFD : page Configuration du vaisseau",
+     "actions": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_configuration_short"
+      }
+     ],
+     "why_fr": "Ouvre la page de réglages du vaisseau, celle où CIG permet aussi d'activer le HUD avancé pour ce vaisseau.",
+     "kbd": ""
+    },
+    {
+     "id": "mfd_power",
+     "label_fr": "Écran MFD : réseau d'énergie (court) / diagnostics (long)",
+     "actions": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_resource_network_short"
+      },
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_select_view_diagnostics_long"
+      }
+     ],
+     "why_fr": "Les deux pages techniques du vaisseau (énergie, état des composants) sur un seul bouton.",
+     "kbd": ""
+    },
+    {
+     "id": "camera_cycle",
+     "label_fr": "Changer de vue caméra (cockpit / extérieure)",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_cycle_fwd"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_view_cycle_fwd"
+      }
+     ],
+     "why_fr": "Passe en vue extérieure pour voir le vaisseau et ses alentours, comme F4.",
+     "kbd": "f4"
+    },
+    {
+     "id": "look_ahead",
+     "label_fr": "Regard anticipé on/off",
+     "actions": [
+      {
+       "map": "spaceship_targeting",
+       "action": "v_look_ahead_enable"
+      }
+     ],
+     "why_fr": "La vue tourne un peu vers là où va le vaisseau : réglage d'affichage, sans risque.",
+     "kbd": "lalt+l"
+    },
+    {
+     "id": "reset_gmeter",
+     "label_fr": "Remise à zéro de l'accéléromètre (G max)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_reset_gmeter_max"
+      }
+     ],
+     "why_fr": "Remet à zéro le G maximum affiché ; va avec le HUD avancé qui montre les accélérations.",
+     "kbd": "ralt+c"
+    }
+   ],
+   "slots": [
+    {
+     "slot": "F2",
+     "js": "button28",
+     "recommended_id": "advanced_hud",
+     "note_fr": "Bouton de gauche. Un appui affiche ou masque le HUD avancé."
+    }
+   ]
+  },
+  {
+   "control": "F3",
+   "kind": "button",
+   "theme_fr": "Bouton de droite du socle : mise en route et vie à bord, vaisseau posé.",
+   "pool": [
+    {
+     "id": "flight_ready",
+     "label_fr": "Prêt au vol (démarrer le vaisseau)",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_flightready"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_flightready"
+      }
+     ],
+     "why_fr": "Un seul appui en s'asseyant allume tout ; Alt Gr+R est malcommode main gauche, ici c'est un vrai bouton « START ».",
+     "kbd": "ralt+r"
+    },
+    {
+     "id": "headlights",
+     "label_fr": "Phares on/off",
+     "actions": [
+      {
+       "map": "lights_controller",
+       "action": "v_lights"
+      }
+     ],
+     "why_fr": "Grottes, nuit, hangars ; la touche L est loin de la main gauche en AZERTY.",
+     "kbd": "l"
+    },
+    {
+     "id": "doors_toggle",
+     "label_fr": "Ouvrir/fermer toutes les portes",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_toggle_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_toggle_all_doors"
+      }
+     ],
+     "why_fr": "Aucune touche clavier par défaut : un bouton du socle est l'endroit idéal.",
+     "kbd": ""
+    },
+    {
+     "id": "door_locks",
+     "label_fr": "Verrouiller/déverrouiller les portes",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_toggle_all_doorlocks"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_toggle_all_doorlocks"
+      }
+     ],
+     "why_fr": "Empêche les autres joueurs d'entrer quand tu es garé ; aucune touche par défaut.",
+     "kbd": ""
+    },
+    {
+     "id": "port_locks",
+     "label_fr": "Verrous des ports cargo/véhicules on/off",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_toggle_all_portlocks"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_toggle_all_portlocks"
+      }
+     ],
+     "why_fr": "Bloque ou libère la cargaison et les véhicules arrimés, une fois posé.",
+     "kbd": "ralt+k"
+    },
+    {
+     "id": "starmap",
+     "label_fr": "Carte stellaire",
+     "actions": [
+      {
+       "map": "spaceship_hud",
+       "action": "v_starmap"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_starmap"
+      }
+     ],
+     "why_fr": "Ouvrir la carte pour tracer un saut quantique, vaisseau calme.",
+     "kbd": "f2"
+    },
+    {
+     "id": "mobiglas",
+     "label_fr": "mobiGlas",
+     "actions": [
+      {
+       "map": "spaceship_hud",
+       "action": "mobiglas"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "mobiglas"
+      }
+     ],
+     "why_fr": "Contrats, inventaire, réglages : consulté à l'arrêt ou pendant un saut quantique.",
+     "kbd": "f1"
+    },
+    {
+     "id": "hail_target",
+     "label_fr": "Héler la cible (appel radio)",
+     "actions": [
+      {
+       "map": "spaceship_target_hailing",
+       "action": "v_target_hail"
+      }
+     ],
+     "why_fr": "Appeler le vaisseau ciblé avant d'agir ; la touche 9 est loin de la main gauche.",
+     "kbd": "9"
+    },
+    {
+     "id": "atc_request",
+     "label_fr": "Contacter la tour de contrôle",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_atc_request"
+      }
+     ],
+     "why_fr": "À chaque arrivée en station ; seulement si C1 ne le prend pas.",
+     "kbd": "lalt+n"
+    },
+    {
+     "id": "camera_cycle",
+     "label_fr": "Changer de vue caméra",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_cycle_fwd"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_view_cycle_fwd"
+      }
+     ],
+     "why_fr": "Vue extérieure pour vérifier le train, la rampe ou les alentours.",
+     "kbd": "f4"
+    }
+   ],
+   "slots": [
+    {
+     "slot": "F3",
+     "js": "button29",
+     "recommended_id": "flight_ready",
+     "note_fr": "Bouton de droite. À presser une fois assis, vaisseau posé ; évite d'y toucher en vol."
+    }
+   ]
+  },
+  {
+   "control": "SW1",
+   "kind": "two_way",
+   "theme_fr": "Interrupteur à rappel : une paire haut / bas d'actions opposées, sans jamais douter de l'état.",
+   "pool": [
+    {
+     "id": "doors_ramp",
+     "label_fr": "Haut = fermer les portes / bas = ouvrir",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_close_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_close_all_doors"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_general",
+       "action": "v_open_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_open_all_doors"
+      }
+     ],
+     "why_fr": "Comme une rampe : vers le bas elle s'ouvre, vers le haut elle remonte ; aucune touche clavier n'existe pour ça.",
+     "kbd": ""
+    },
+    {
+     "id": "lights_on_off",
+     "label_fr": "Haut = phares allumés / bas = éteints",
+     "actions": [
+      {
+       "map": "lights_controller",
+       "action": "v_lights_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "lights_controller",
+       "action": "v_lights_off"
+      }
+     ],
+     "why_fr": "Haut allume, bas éteint : pas besoin de vérifier si les phares sont déjà allumés.",
+     "kbd": ""
+    },
+    {
+     "id": "gear_lever",
+     "label_fr": "Haut = rentrer le train / bas = le sortir",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_retract_landing_system"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_deploy_landing_system"
+      }
+     ],
+     "why_fr": "Exactement le levier de train d'un avion ; à prendre si tu mets autre chose sur F1.",
+     "kbd": ""
+    },
+    {
+     "id": "door_locks_pair",
+     "label_fr": "Haut = verrouiller les portes / bas = déverrouiller",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_lock_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_lock_all_doors"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_general",
+       "action": "v_unlock_all_doors"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_unlock_all_doors"
+      }
+     ],
+     "why_fr": "Sécuriser le vaisseau garé d'un geste, sans ambiguïté.",
+     "kbd": ""
+    },
+    {
+     "id": "port_locks_pair",
+     "label_fr": "Haut = verrouiller les ports cargo / bas = libérer",
+     "actions": [
+      {
+       "map": "spaceship_general",
+       "action": "v_lock_all_ports"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_lock_all_ports"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_general",
+       "action": "v_unlock_all_ports"
+      },
+      {
+       "map": "vehicle_general",
+       "action": "v_unlock_all_ports"
+      }
+     ],
+     "why_fr": "Bloquer ou libérer la cargaison arrimée, état toujours certain.",
+     "kbd": ""
+    },
+    {
+     "id": "vtol_on_off",
+     "label_fr": "Haut = VTOL activé / bas = désactivé",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_vtol_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_vtol_off"
+      }
+     ],
+     "why_fr": "Pour les vaisseaux à moteurs orientables : tu sais toujours dans quel mode tu es.",
+     "kbd": ""
+    },
+    {
+     "id": "speed_limiter_on_off",
+     "label_fr": "Haut = limiteur de vitesse activé / bas = désactivé",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_off"
+      }
+     ],
+     "why_fr": "Complète la molette : active ou coupe le limiteur qu'elle règle.",
+     "kbd": ""
+    },
+    {
+     "id": "advanced_hud_on_off",
+     "label_fr": "Haut = HUD avancé affiché / bas = masqué",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_flight_advanced_hud_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_flight_advanced_hud_off"
+      }
+     ],
+     "why_fr": "Version sans ambiguïté du cockpit détaillé ; à prendre si F2 fait autre chose.",
+     "kbd": ""
+    },
+    {
+     "id": "light_amp_on_off",
+     "label_fr": "Haut = vision nocturne on / bas = off",
+     "actions": [
+      {
+       "map": "seat_general",
+       "action": "v_light_amplification_on"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "seat_general",
+       "action": "v_light_amplification_off"
+      }
+     ],
+     "why_fr": "Version sans ambiguïté de l'amplification de lumière.",
+     "kbd": ""
+    },
+    {
+     "id": "ptt_pair",
+     "label_fr": "Haut = parler radio / bas = parler à proximité (maintenir)",
+     "actions": [
+      {
+       "map": "player_input_optical_tracking",
+       "action": "foip_pushtotalk"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "player_input_optical_tracking",
+       "action": "foip_pushtotalk_proximity"
+      }
+     ],
+     "why_fr": "Un interrupteur qui revient seul est parfait pour « appuyer pour parler » : tenu = micro ouvert, relâché = coupé.",
+     "kbd": "np_add / lalt+np_add (maintenus)"
+    },
+    {
+     "id": "master_mode_pair",
+     "label_fr": "Haut = mode NAV / bas = mode SCM",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_master_mode_set_nav"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_master_mode_set_scm"
+      }
+     ],
+     "why_fr": "Haut = voyage, bas = combat : très logique, mais c'est le rôle prévu pour A4 ; seulement si A4 ne le prend pas.",
+     "kbd": "b maintenu (bascule)"
+    },
+    {
+     "id": "cruise_pair",
+     "label_fr": "Haut = régulateur (cruise) on / bas = off",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_set_sticky"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_throttle_set_normal"
+      }
+     ],
+     "why_fr": "En mode régulateur, la poussée reste où tu l'as mise ; avec le limiteur sur la molette, ça fait un vrai régulateur de vitesse.",
+     "kbd": "lalt+c (bascule)"
+    }
+   ],
+   "slots": [
+    {
+     "slot": "SW1",
+     "js": "button25/26",
+     "recommended_id": "doors_ramp",
+     "note_fr": "Pousser vers le haut = fermer toutes les portes (la rampe remonte). Tirer vers le bas = ouvrir toutes les portes (la rampe descend)."
+    }
+   ]
+  },
+  {
+   "control": "WHEEL",
+   "kind": "axis",
+   "theme_fr": "Molette absolue sans cran ni ressort : un niveau qu'on règle et qui reste (vitesse max…), jamais un zéro au milieu.",
+   "pool": [
+    {
+     "id": "speed_limiter_abs",
+     "label_fr": "Limiteur de vitesse (absolu)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_abs"
+      }
+     ],
+     "why_fr": "La position de la molette fixe la vitesse max : en bas lent et précis, en haut pleine vitesse, sans besoin de point milieu.",
+     "kbd": "lalt+mwheel (équivalent pas à pas)"
+    },
+    {
+     "id": "speed_limiter_abs_turret",
+     "label_fr": "Limiteur de vitesse pilote + tourelle",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_abs"
+      },
+      {
+       "map": "turret_advanced",
+       "action": "turret_limiter_abs"
+      }
+     ],
+     "why_fr": "Même molette pour la vitesse du vaisseau et la vitesse de rotation des tourelles : sièges différents, donc sans conflit.",
+     "kbd": "lalt+mwheel (équivalent pas à pas)"
+    },
+    {
+     "id": "accel_limiter_abs",
+     "label_fr": "Limiteur d'accélération (absolu)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_accel_range_abs"
+      }
+     ],
+     "why_fr": "Règle la force des propulseurs : doux pour se poser, à fond pour le combat.",
+     "kbd": "ralt+mwheel (équivalent pas à pas)"
+    },
+    {
+     "id": "zoom_abs",
+     "label_fr": "Zoom de la vue (absolu)",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_dynamic_zoom_abs"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_view_dynamic_zoom_abs"
+      }
+     ],
+     "why_fr": "La position de la molette donne le niveau de zoom pour repérer de loin (voir la note : peut demander un bouton de maintien).",
+     "kbd": ""
+    },
+    {
+     "id": "convergence_abs",
+     "label_fr": "Distance de convergence des armes (absolu)",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_convergence_distance_abs"
+      }
+     ],
+     "why_fr": "Règle à quelle distance tes canons se croisent ; actif seulement en mode canons.",
+     "kbd": ""
+    },
+    {
+     "id": "mining_power",
+     "label_fr": "Puissance du laser de minage",
+     "actions": [
+      {
+       "map": "spaceship_mining",
+       "action": "v_mining_throttle"
+      }
+     ],
+     "why_fr": "Un vrai réglage de niveau, actif seulement en mode minage (axe inversé par défaut par le jeu, voir la note).",
+     "kbd": "mwheel (version + / −)"
+    },
+    {
+     "id": "salvage_spacing",
+     "label_fr": "Écartement des têtes de récupération",
+     "actions": [
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_beam_spacing_abs"
+      }
+     ],
+     "why_fr": "Règle l'écart des deux faisceaux de récupération ; actif seulement en mode récupération.",
+     "kbd": ""
+    },
+    {
+     "id": "work_tools",
+     "label_fr": "Outils : minage + récupération",
+     "actions": [
+      {
+       "map": "spaceship_mining",
+       "action": "v_mining_throttle"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_beam_spacing_abs"
+      }
+     ],
+     "why_fr": "Une molette « outil » qui change selon le mode actif, sans jamais toucher au vol.",
+     "kbd": ""
+    },
+    {
+     "id": "mode_tools",
+     "label_fr": "Réglage du mode actif : convergence / minage / récupération",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_convergence_distance_abs"
+      },
+      {
+       "map": "spaceship_mining",
+       "action": "v_mining_throttle"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_beam_spacing_abs"
+      }
+     ],
+     "why_fr": "Canons = convergence, minage = puissance, récupération = écart : trois modes qui ne sont jamais actifs ensemble.",
+     "kbd": ""
+    },
+    {
+     "id": "turret_limiter_abs",
+     "label_fr": "Limiteur de vitesse des tourelles",
+     "actions": [
+      {
+       "map": "turret_advanced",
+       "action": "turret_limiter_abs"
+      }
+     ],
+     "why_fr": "Pour les tireurs : ralentit la rotation de la tourelle pour viser fin.",
+     "kbd": ""
+    },
+    {
+     "id": "throttle_abs",
+     "label_fr": "Gaz avant/arrière (absolu) — déconseillé",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_longitudinal"
+      }
+     ],
+     "why_fr": "Ferait de la molette une manette des gaz, mais sans cran au milieu le zéro est introuvable : seulement avec une grande zone morte au centre.",
+     "kbd": "w/s (z/s en AZERTY)"
+    }
+   ],
+   "slots": [
+    {
+     "slot": "WHEEL",
+     "js": "z",
+     "recommended_id": "speed_limiter_abs",
+     "note_fr": "En haut = vitesse max ; en bas = très lent. Bouge-la un peu en t'asseyant pour que le jeu lise sa position."
+    }
+   ]
+  },
+  {
+   "control": "EN1",
+   "kind": "encoder",
+   "theme_fr": "Bouton rotatif à crans : réglages + / − pas à pas (un cran = un pas).",
+   "pool": [
+    {
+     "id": "accel_step",
+     "label_fr": "Limiteur d'accélération + / −",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_accel_range_increment"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_accel_range_decrement"
+      }
+     ],
+     "why_fr": "Chaque cran durcit ou adoucit les propulseurs ; CIG le met déjà sur une molette (Alt droit + molette).",
+     "kbd": "ralt+mwheel_up / ralt+mwheel_down"
+    },
+    {
+     "id": "speed_step",
+     "label_fr": "Limiteur de vitesse + / − (par crans)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_increment"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_ifcs_speed_limiter_decrement"
+      }
+     ],
+     "why_fr": "Vitesse max cran par cran comme Alt gauche + molette ; seulement si la molette des gaz fait autre chose.",
+     "kbd": "lalt+mwheel_up / lalt+mwheel_down"
+    },
+    {
+     "id": "zoom_step",
+     "label_fr": "Zoom avant / arrière",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_dynamic_zoom_rel_in"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_view_dynamic_zoom_rel_in"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_dynamic_zoom_rel_out"
+      },
+      {
+       "map": "vehicle_driver",
+       "action": "v_view_dynamic_zoom_rel_out"
+      }
+     ],
+     "why_fr": "Tourner pour zoomer comme une bague de jumelles (petit pas par cran).",
+     "kbd": ""
+    },
+    {
+     "id": "mfd_pages",
+     "label_fr": "Écrans MFD : page suivante / précédente",
+     "actions": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_interact_cycle_forwards_short"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "vehicle_mfd",
+       "action": "v_mfd_interact_cycle_backwards_short"
+      }
+     ],
+     "why_fr": "Un bouton rotatif pour feuilleter les pages des écrans du cockpit.",
+     "kbd": "lalt+e / lalt+q"
+    },
+    {
+     "id": "convergence_step",
+     "label_fr": "Convergence des armes + / −",
+     "actions": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_convergence_distance_rel_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_weapons",
+       "action": "v_weapon_convergence_distance_rel_decrease"
+      }
+     ],
+     "why_fr": "Éloigne ou rapproche le point où tes tirs se croisent, cran par cran ; actif en mode canons.",
+     "kbd": ""
+    },
+    {
+     "id": "power_weapons",
+     "label_fr": "Énergie des armes + / −",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_weapons_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_weapons_decrease"
+      }
+     ],
+     "why_fr": "Un cran = un point d'énergie en plus ou en moins dans les armes (comme F5 / Alt+F5).",
+     "kbd": "f5 / lalt+f5"
+    },
+    {
+     "id": "power_shields",
+     "label_fr": "Énergie des boucliers + / −",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_shields_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_shields_decrease"
+      }
+     ],
+     "why_fr": "Un cran = un point d'énergie en plus ou en moins dans les boucliers (comme F7 / Alt+F7).",
+     "kbd": "f7 / lalt+f7"
+    },
+    {
+     "id": "power_engines",
+     "label_fr": "Énergie des moteurs + / −",
+     "actions": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_engine_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_power",
+       "action": "v_engineering_assignment_engine_decrease"
+      }
+     ],
+     "why_fr": "Un cran = un point d'énergie en plus ou en moins dans les propulseurs (comme F6 / Alt+F6).",
+     "kbd": "f6 / lalt+f6"
+    },
+    {
+     "id": "decoy_burst",
+     "label_fr": "Taille de la salve de leurres + / −",
+     "actions": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_burst_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_defensive",
+       "action": "v_weapon_countermeasure_decoy_burst_decrease"
+      }
+     ],
+     "why_fr": "Choisir combien de leurres partent à chaque tir, à régler avant le combat.",
+     "kbd": "ralt+h / lalt+h"
+    },
+    {
+     "id": "bomb_hud_range",
+     "label_fr": "Bombes : portée du viseur de largage + / −",
+     "actions": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_bombing_hud_range_increase"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_missiles",
+       "action": "v_weapon_bombing_hud_range_decrease"
+      }
+     ],
+     "why_fr": "Avance ou recule d'un pas la distance du viseur de bombardement ; actif en mode missiles/bombes.",
+     "kbd": ""
+    },
+    {
+     "id": "work_tools",
+     "label_fr": "Outils : puissance minage / écartement récupération + / −",
+     "actions": [
+      {
+       "map": "spaceship_mining",
+       "action": "v_increase_mining_throttle"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_increase_beam_spacing"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_mining",
+       "action": "v_decrease_mining_throttle"
+      },
+      {
+       "map": "spaceship_salvage",
+       "action": "v_salvage_decrease_beam_spacing"
+      }
+     ],
+     "why_fr": "Le même bouton rotatif règle l'outil du mode actif (minage ou récupération), sans toucher au vol.",
+     "kbd": "mwheel (minage)"
+    },
+    {
+     "id": "scan_angle",
+     "label_fr": "Angle du scanner + / −",
+     "actions": [
+      {
+       "map": "spaceship_scanning",
+       "action": "v_inc_scan_focus_level"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_scanning",
+       "action": "v_dec_scan_focus_level"
+      }
+     ],
+     "why_fr": "Resserre ou élargit le cône de scan, actif seulement en mode scan.",
+     "kbd": ""
+    },
+    {
+     "id": "tractor_distance",
+     "label_fr": "Rayon tracteur du vaisseau : plus loin / plus près",
+     "actions": [
+      {
+       "map": "spaceship_salvage",
+       "action": "tractor_beam_vehicle_increase_distance"
+      }
+     ],
+     "actions_b": [
+      {
+       "map": "spaceship_salvage",
+       "action": "tractor_beam_vehicle_decrease_distance"
+      }
+     ],
+     "why_fr": "Éloigne ou rapproche l'objet tenu par le rayon tracteur du vaisseau, cran par cran.",
+     "kbd": ""
+    }
+   ],
+   "slots": [
+    {
+     "slot": "EN1",
+     "js": "button23/24",
+     "recommended_id": "accel_step",
+     "note_fr": "button23 = « + » (actions), button24 = « − » (actions_b). Si le sens est inversé, échange les deux."
+    }
+   ]
+  },
+  {
+   "control": "AXES",
+   "kind": "axis",
+   "theme_fr": "Piloter : incliner à droite = le vaisseau s'incline à droite",
+   "pool": [
+    {
+     "id": "roll",
+     "label_fr": "Roulis (s'incliner)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_roll"
+      }
+     ],
+     "kbd": "Q / E",
+     "why_fr": "Incliner le manche à droite fait pencher le vaisseau à droite, comme un avion."
+    },
+    {
+     "id": "pitch",
+     "label_fr": "Tangage (piquer / cabrer)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_pitch"
+      }
+     ],
+     "kbd": "flèches haut / bas",
+     "why_fr": "Pousser = le nez descend, tirer = le nez monte."
+    },
+    {
+     "id": "yaw",
+     "label_fr": "Lacet (tourner le nez)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_yaw"
+      }
+     ],
+     "kbd": "flèches gauche / droite",
+     "why_fr": "Tourner la poignée à droite fait pivoter le nez à droite, sans pencher."
+    },
+    {
+     "id": "roll_inv",
+     "label_fr": "Roulis, sens inversé",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_roll"
+      }
+     ],
+     "invert": [
+      "flight_move_roll"
+     ],
+     "kbd": "",
+     "why_fr": "Seulement si, en jeu, le vaisseau penche du mauvais côté."
+    },
+    {
+     "id": "pitch_inv",
+     "label_fr": "Tangage inversé (pousser = cabrer)",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_pitch"
+      }
+     ],
+     "invert": [
+      "flight_move_pitch"
+     ],
+     "kbd": "",
+     "why_fr": "Pour ceux qui préfèrent l'inverse de l'aviation."
+    },
+    {
+     "id": "yaw_inv",
+     "label_fr": "Lacet, sens inversé",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_yaw"
+      }
+     ],
+     "invert": [
+      "flight_move_yaw"
+     ],
+     "kbd": "",
+     "why_fr": "Seulement si, en jeu, le nez tourne du mauvais côté."
+    },
+    {
+     "id": "strafe_lat",
+     "label_fr": "Translation gauche / droite",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_lateral"
+      }
+     ],
+     "kbd": "A / D",
+     "why_fr": "Glisser sur le côté sans tourner : précis pour se poser ou esquiver."
+    },
+    {
+     "id": "strafe_vert",
+     "label_fr": "Translation haut / bas",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_vertical"
+      }
+     ],
+     "kbd": "Espace / Ctrl",
+     "why_fr": "Monter ou descendre à plat : idéal pour l'atterrissage."
+    },
+    {
+     "id": "throttle",
+     "label_fr": "Gaz avant / arrière",
+     "actions": [
+      {
+       "map": "spaceship_movement",
+       "action": "v_strafe_longitudinal"
+      }
+     ],
+     "kbd": "W / S",
+     "why_fr": "Avancer ou reculer en continu, au centre = arrêt."
+    },
+    {
+     "id": "look_yaw",
+     "label_fr": "Regarder gauche / droite",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_yaw"
+      }
+     ],
+     "kbd": "souris (en maintenant Z)",
+     "why_fr": "Tourner la tête dans le cockpit pendant le regard libre."
+    },
+    {
+     "id": "look_pitch",
+     "label_fr": "Regarder haut / bas",
+     "actions": [
+      {
+       "map": "spaceship_view",
+       "action": "v_view_pitch"
+      }
+     ],
+     "kbd": "souris (en maintenant Z)",
+     "why_fr": "Lever ou baisser la tête dans le cockpit pendant le regard libre."
+    }
+   ],
+   "slots": [
+    {
+     "slot": "AX_X",
+     "js": "x",
+     "recommended_id": "roll",
+     "note_fr": "1er axe (X) : incliner le manche à gauche / droite. C'est le changement que tu demandes : le jeu met le lacet ici par défaut."
+    },
+    {
+     "slot": "AX_Y",
+     "js": "y",
+     "recommended_id": "pitch",
+     "note_fr": "2e axe (Y) : pousser / tirer le manche."
+    },
+    {
+     "slot": "AX_TWIST",
+     "js": "rotz",
+     "recommended_id": "yaw",
+     "note_fr": "6e axe (Rz) : tourner la poignée sur elle-même."
+    },
+    {
+     "slot": "AX_MINI_X",
+     "js": "rotx",
+     "recommended_id": "strafe_lat",
+     "note_fr": "4e axe (Rx) : mini-stick A1 gauche / droite, actif seulement après un clic sur A1 (mode analogique ; re-clic = retour au choix des armes)."
+    },
+    {
+     "slot": "AX_MINI_Y",
+     "js": "roty",
+     "recommended_id": "strafe_vert",
+     "note_fr": "5e axe (Ry) : mini-stick A1 haut / bas, actif seulement en mode analogique."
+    }
+   ]
+  }
+ ],
+ "notes_fr": [
+  "Le profil efface tout seul les actions que Star Citizen met par défaut sur ces boutons (translations sur A3, leurres sur A2, boost, mode interaction, réglages de minage et de scan…). Chaque bouton ne fait donc que ce qui est écrit sur sa carte.",
+  "A2 et tous les choix de cible sont des actions 'tap' dans le fichier du jeu. Elles partent quand tu relâches, et seulement si tu relâches en moins de 0,25 s : il faut donc appuyer sec. Si tu gardes A2 enfoncé 0,25 s ou plus, c'est l'appui long qui part (ciblage auto on/off), comme quand tu maintiens T.",
+  "Par défaut, T porte 3 actions : 'Sous le réticule' et 'Suivant dans le champ' en appui court, plus le ciblage auto en appui long. A2 reprend les trois. Le jeu choisit selon la situation : s'il y a un vaisseau sous le viseur, il le verrouille, sinon il passe au suivant visible. Si A2 saute parfois vers une autre cible, prends à la place l'option « Verrouiller pile sous le viseur » (Verrouiller pile sous le viseur) : elle ne fait jamais défiler les cibles.",
+  "Le rond de tir (PIP) s'affiche sur la cible verrouillée quand elle est à portée de tes armes. S'il n'apparaît pas, regarde le mode de visée : Alt droit + G fait défiler PIP / peinture / automatique. Le jeu a aussi une action 'Toggle Lead / Lag PIPs', sans touche par défaut, qui change la façon de dessiner ce rond. Lead est le réglage habituel : tu mets ton viseur sur le rond placé devant la cible.",
+  "Le scanner en 4.10. Clic A3 = mode scan (V). A3 haut, maintenu puis relâché = onde radar (Tab), qui fait apparaître les signatures autour de toi. A3 gauche fait défiler tous les contacts détectés, A3 droite seulement les ennemis ; A2 prend ce qui est sous le viseur. En mode scan, tu maintiens la gâchette pour scanner la cible : c'est v_scanning_trigger_scan (clic gauche par défaut), sur le 1er cran de la gâchette, ce qui revient au groupe gâchette. A3 bas vise ensuite un composant de la cible. Toujours en mode scan, A1 gauche/droite règle la largeur du cône : un cône étroit isole un seul objet quand plusieurs sont dans la même direction.",
+  "Bombes : le fichier 4.10 n'a pas de 'mode bombes'. Toutes les actions de bombes sont dans la carte Missiles, donc les bombes passent par le mode missiles (A1 bas), et on choisit leur type avec A1 gauche/droite comme pour les missiles. À confirmer en jeu, car ça dépend du vaisseau.",
+  "Lasers ou balistiques = groupes d'armes, 4 au maximum. Sur la page Armes d'un écran du cockpit, tu choisis quelles armes vont dans quel groupe (ex : groupe 1 = lasers, groupe 2 = balistiques ; un groupe peut aussi contenir un EMP ou un QED). Ensuite A1 gauche/droite passe d'un groupe à l'autre et la gâchette tire le groupe actif. Le 'Suivant' normal s'arrête au dernier groupe ; l'option « Groupe suivant en boucle » repart au premier.",
+  "A1 doit être en mode chapeau (POV). Un clic sur A1 bascule le mode VKB entre chapeau et analogique : en analogique, rien n'arrive sur hat1_*. Pousse A1 bien droit, car une diagonale peut déclencher deux directions.",
+  "v_set_guns_mode et v_set_missile_mode sont en 'press' : ils agissent tout de suite, sans appui long. A1 haut te remet en canons depuis n'importe quel mode, scan compris.",
+  "Chaque action ne peut être que sur UNE entrée joystick. Si tu choisis une option qui reprend une action déjà conseillée ailleurs (ex : « Ennemi le plus proche » sur A2 alors que A3 droite fait déjà les ennemis), change aussi l'autre bouton. v_weapon_preset_next/prev et v_weapon_cycle_missile_fwd/back sont sur A1 : on ne les remet ni sur EN1 ni sur le 2e cran de la gâchette. Pareil pour l'angle de scan (v_inc/dec_scan_focus_level) : si le groupe socle le veut sur EN1, prendre « Suivant (armes seulement) » / « Précédent (armes seulement) » pour A1 droite/gauche.",
+  "Dans cette proposition, le blocage des cardans (G) et la visée de précision (clic droit) ne sont pas sur la tête du manche. Pour les y mettre : option « Cardans / missiles armés + (G) » (sur A1) ou « Visée de précision (zoom) » (sur A2). Sinon ils restent au clavier et à la souris.",
+  "Mode NAV / SCM (A4 poussoir) : en 4.10 c'est un appui long, comme maintenir B au clavier (~0,25 s). Selon les guides 4.10, en NAV boucliers et armes sont coupés : tu es vulnérable mais rapide, et le quantique est disponible. En SCM (combat), tout revient. Un appui court ne fait rien, donc pas de passage en NAV par accident en combat.",
+  "Saut quantique en 4.10 : 1) maintenir A4 poussoir pour passer en NAV ; 2) si tu n'es pas déjà en mode quantique (QT), A4 haut le sélectionne (au clavier il n'y a pas de touche : on fait défiler les modes au clic molette) ; 3) viser ou choisir la destination ; 4) maintenir la gâchette pour sauter (la gâchette est réglée par le groupe 'doigts').",
+  "Boucliers on/off (A4 bas, touche O) : coupe l'alimentation des boucliers, ce n'est pas la même chose que le mode NAV. Le jeu ne propose cette action qu'en appui instantané, sans version de sécurité. Si un appui en diagonale bas+droite ou bas+gauche la déclenche par erreur, remplace-la par 'Boucliers ON (forcer)'.",
+  "Priorités d'énergie (A4 droite / gauche) : un appui court donne +1 point au système, maintenir ~0,25 s envoie tout vers ce système. Pour revenir à l'équilibre : F8 au clavier. Les moteurs restent sur F6 au clavier.",
+  "Atterrissage (C1 poussoir) : appui court = la tour (demande de pad en arrivant, autorisation de décoller en partant). Maintenir ~0,25 s = atterrissage auto ; il ne marche que quand un pad ou un hangar t'a été attribué et que tu es assez près. Normalement l'atterrissage auto sort le train lui-même ; le train à la main reste sur F1.",
+  "Si tu préfères 'C1 bas = se poser' : mets 'autoland' sur C1 bas et '« Demande d'atterrissage / décollage seule »' sur le poussoir, mais n'utilise jamais en même temps '« Tour (court) + atterrissage auto (maintenu) »' avec 'autoland' ou '« Demande d'atterrissage / décollage seule »', sinon une même action se retrouve sur deux boutons.",
+  "Amarrage (C1 gauche) : pour les vaisseaux qui s'amarrent aux ports des stations. Appui court = demander, puis annuler ou se détacher ; appui long = caméra d'amarrage (touche 0).",
+  "Clavier AZERTY : N, B, K, L, O, I, P, U et F5 à F8 sont au même endroit qu'en QWERTY, donc les équivalents clavier indiqués restent valables.",
+  "Gâchette 1er cran : elle fait l'action du mode actif, comme le clic gauche. Mode Canons : tir du préréglage choisi. Mode Missiles : lancer le missile ou larguer la bombe (dans le fichier du jeu 4.10, les commandes de bombes sont rangées avec les missiles). Mode Scan : scanner tant que tu serres. Mode Minage : un appui allume ou éteint le laser, un maintien le garde allumé pendant que tu serres. Mode Récupération : rayon. Mode Quantum : saut.",
+  "Saut quantique : c'est un appui long. Garde la gâchette serrée un court instant ; un simple clic ne lance pas le saut.",
+  "2e cran = « Tirer le groupe d'armes 2 ». Tu ne l'atteins qu'en tirant à fond, donc le 1er cran tire déjà. Range tes armes dans l'écran Armes du MFD (par exemple lasers = groupe 1, balistiques = groupe 2). Par défaut, toutes les armes sont dans le groupe 1 : le 2e cran ne fait alors rien et ne gêne pas. Il n'agit qu'en mode Canons.",
+  "Si tu as peur de lancer un missile par erreur, prends « Tir / action selon le mode, sans missile au 1er cran » au 1er cran et « Groupe 2 (Canons) / lancer missile (Missiles), à fond » au 2e : en mode Missiles, il faudra tirer à fond pour lancer. Ne mets jamais la même action de lancement sur les deux crans.",
+  "Le scan (v_scanning_trigger_scan) et le saut quantique (v_toggle_qdrive_engagement) restent sur la gâchette. Star Citizen ne garde qu'une entrée joystick par action. A3 et A4 servent donc à choisir le mode Scan ou Quantum, et la gâchette à agir dans ce mode.",
+  "B1 boost : le boost dure tant que tu appuies. Le même bouton fait aussi le boost en véhicule terrestre.",
+  "Leurres : un appui court lance une salve. Un appui maintenu (plus de 0,25 s) règle la taille de la salve puis la lance. Le bruit se déclenche d'un simple appui. Le levier revient seul au centre, donc chaque coup compte pour un appui.",
+  "Levier rapid fire : haut = button21, bas = button22. Pour toutes les options du levier, tu peux inverser haut et bas si l'autre sens te va mieux en main.",
+  "D1 frein spatial : il freine tant que tu tiens le bouton. En véhicule terrestre, c'est le frein normal.",
+  "Autre bon choix pour D1 : la vue libre. En la maintenant, le manche tourne la tête du pilote au lieu du vaisseau (le jeu relie le regard gauche/droite et haut/bas aux axes x et y du joystick). C'est pratique sans TrackIR pour repérer les vaisseaux autour. Prends-la si tu utilises peu le frein spatial ; le frein reste aussi sur la touche X.",
+  "Les noms de touches de la colonne clavier viennent du fichier du jeu, qui est en QWERTY. Si le jeu lit la position physique des touches (à vérifier dans le menu Touches), alors sur AZERTY « z » est ta touche W, « w » ta touche Z, « a » ta touche Q et « comma » ta touche ; (point-virgule). « x », « c », « h », « j » et « lshift » ne changent pas.",
+  "Socle = il faut lâcher le manche (ou le clavier). On n'y met donc que des choses calmes : sol, démarrage, affichage, réglages. Rien dont tu as besoin en plein combat.",
+  "Par rapport à ton ancien profil, seule la molette garde la même fonction (limiteur de vitesse), parce que c'est vraiment le meilleur choix : c'est le seul réglage de vol qu'on veut continu et qui reste en place. Le reste change : F1 = train, F2 = HUD avancé, F3 = prêt au vol, SW1 = fermer/ouvrir les portes, EN1 = limiteur d'accélération.",
+  "F2 « cockpit détaillé » = HUD avancé (Advanced HUD - Toggle, v_flight_advanced_hud_toggle), sans touche par défaut. D'après CIG (4.0), il ajoute au HUD les accélérations, l'assiette, la vitesse verticale, l'altitude au-dessus du sol (radio-altimètre), l'altitude au-dessus du niveau de la mer, la pression atmosphérique, etc. Il se règle aussi par vaisseau dans la page Configuration des écrans MFD et dans les options du jeu. Une option du jeu semble l'afficher d'office en mode NAV : s'il est déjà affiché, le premier appui le masque, appuie une deuxième fois. Source : https://robertsspaceindustries.com/spectrum/community/SC/forum/4/thread/4-0-eptu-feedback-advanced-flight-hud",
+  "Si l'effet « j'appuie sur une lettre et le cockpit devient beaucoup plus détaillé » venait d'une autre touche : F = mode interaction, Alt Gr+L = amplification de lumière (options F2 « Mode interaction (maintenir, comme F) » et « Amplification de lumière (vision nocturne) »), V = mode scan (le HUD affiche les signatures : c'est le rôle de A3), B maintenu = passage NAV/SCM (le HUD change complètement : rôle de A4).",
+  "F1 = train (v_toggle_landing_system, appui court). Star Citizen n'accepte qu'UNE entrée joystick par action : C1 (« atterrissage auto, touche N ») doit donc utiliser v_autoland (appui long de N), pas le basculement du train. Dans la configuration d'origine, v_toggle_landing_system ET v_autoland sont sur js1_button12 (A4 droite) : en déplaçant le train sur F1, v_autoland reste sur A4 droite tant que personne ne le réassigne.",
+  "MOLETTE (axe z, absolue, sans cran ni ressort) : elle reste là où tu la laisses et le jeu lit sa position exacte. Parfaite pour un NIVEAU (vitesse max, accélération, zoom, convergence, puissance de minage). Mauvaise pour tout ce qui a un zéro au milieu (gaz avant/arrière) : tu ne retrouves jamais le zéro exact et le vaisseau avance ou recule tout seul.",
+  "Les actions « rel » (relatives) sont écartées pour la molette : sur une molette qui ne revient pas au centre, elles continueraient de monter ou de descendre sans arrêt.",
+  "Limiteur de vitesse sur la molette : molette en bas = vitesse max très basse. Si le vaisseau semble refuser d'accélérer, monte d'abord la molette. Si le sens est inversé (haut = lent), coche « Inverser » pour « Velocity Limiter (abs) » dans les réglages des axes du joystick, ou inverse l'axe dans VKBDevCfg. Si la molette n'a aucun effet, le limiteur est peut-être désactivé : prends l'option SW1 « Haut = limiteur de vitesse activé / bas = désactivé ».",
+  "Puissance de minage sur la molette : le defaultProfile.xml inverse cet axe par défaut sur joystick (option « Mining Throttle »). Si la molette marche à l'envers en mode minage, décoche « Inverser » pour Mining Throttle.",
+  "Zoom absolu sur la molette (option « Zoom de la vue (absolu) ») : d'après le texte du jeu, « Dynamic Zoom Toggle (abs.) » maintient le zoom tant que le bouton est tenu. Il faudra peut-être aussi assigner ce bouton pour que la molette agisse. À tester.",
+  "EN1 : chaque cran envoie une courte impulsion. Les actions recommandées sont en « press », donc 1 cran = 1 pas. Je ne sais pas quel sens physique correspond à button23 ou à button24 : si tourner vers la droite diminue, échange les deux. Si un cran ne fait rien ou fait deux pas, ajuste la durée d'impulsion de l'encodeur dans VKBDevCfg. Le zoom (« all ») avance très peu par cran.",
+  "Pourquoi molette = vitesse max et EN1 = limiteur d'accélération : CIG met déjà ces deux réglages sur une molette (Alt gauche + molette pour la vitesse, Alt droit + molette pour l'accélération). Réunis sur le socle, ils forment le « réglage du comportement en vol », pendant que B1 garde le boost. Ne mets pas le limiteur de vitesse à la fois sur la molette et sur EN1.",
+  "SW1 revient seul au centre : chaque poussée envoie une seule commande. Avec « fermer » en haut et « ouvrir » en bas (au lieu d'un « basculer »), le résultat est toujours le même : plus de doute sur l'état des portes.",
+  "Dans le menu des touches du jeu, « Headlights (Enable) » apparaît deux fois : la deuxième est en réalité « éteindre les phares » (v_lights_off). C'est une erreur de texte de CIG.",
+  "Prêt au vol (F3) sert à démarrer, vaisseau posé. Pour tout éteindre : touche U (Toggle Power - All). Je n'ai pas pu vérifier ce que fait un deuxième appui sur « Prêt au vol » : n'y touche pas en vol.",
+  "Les options minage, récupération, scan, bombes et convergence ne marchent que dans leur mode (minage, récupération, scan, missiles, canons) et ne gênent jamais le vol. L'option « limiteur pilote + tourelle » ne crée pas de conflit : on n'est jamais dans les deux sièges à la fois.",
+  "Les options de portes, verrous, prêt au vol, carte, mobiGlas et caméra sont mises aussi dans « vehicle_general », pour que le même bouton marche dans les véhicules terrestres. Les phares (lights_controller) marchent partout."
+ ]
+}
